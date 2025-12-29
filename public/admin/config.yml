@@ -2,7 +2,8 @@ backend:
   name: github
   repo: osmantsdmr/osmantasdemir-website
   branch: main
-  base_url: https://decap-oauth.netlify.app
+  auth_type: pkce
+  app_id: Ov23li8v4VOVSYzjwps8
 
 media_folder: "public/images"
 public_folder: "/images"
@@ -38,14 +39,16 @@ collections:
       - { label: "İçerik", name: "body", widget: "markdown" }
 ```
 
+⚠️ **Önemli:** `Ov23li8v4VOVSYzjwps8` yazan yere GitHub OAuth App'ten aldığın **Client ID**'yi yapıştır!
+
 **Ctrl + S** ile kaydet.
 
 ---
 
-## GitHub OAuth Callback URL'i Güncelle
+## Adım 2: GitHub OAuth App Callback URL Güncelle
 
-GitHub'a git → Settings → Developer settings → OAuth Apps → senin app
+GitHub → Settings → Developer settings → OAuth Apps → senin app
 
 **Authorization callback URL** şununla değiştir:
 ```
-https://decap-oauth.netlify.app/callback
+https://api.netlify.com/auth/done
