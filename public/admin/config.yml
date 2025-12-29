@@ -2,6 +2,7 @@ backend:
   name: github
   repo: osmantsdmr/osmantasdemir-website
   branch: main
+  base_url: https://decap-oauth.netlify.app
 
 media_folder: "public/images"
 public_folder: "/images"
@@ -12,6 +13,7 @@ collections:
     folder: "src/content/projeler"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     fields:
       - { label: "Başlık", name: "baslik", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
@@ -19,7 +21,6 @@ collections:
       - { label: "Tarih", name: "tarih", widget: "string" }
       - { label: "Kısa Açıklama", name: "aciklama", widget: "text" }
       - { label: "Detaylı Açıklama", name: "detay", widget: "text" }
-      - { label: "Ana Görsel", name: "anaGorsel", widget: "image", required: false }
       - { label: "Teknolojiler", name: "teknolojiler", widget: "list" }
       - { label: "Özellikler", name: "ozellikler", widget: "list" }
 
@@ -28,10 +29,23 @@ collections:
     folder: "src/content/blog"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     fields:
       - { label: "Başlık", name: "baslik", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Tarih", name: "tarih", widget: "datetime" }
       - { label: "Özet", name: "ozet", widget: "text" }
-      - { label: "Kapak Görseli", name: "kapakGorseli", widget: "image", required: false }
       - { label: "İçerik", name: "body", widget: "markdown" }
+```
+
+**Ctrl + S** ile kaydet.
+
+---
+
+## GitHub OAuth Callback URL'i Güncelle
+
+GitHub'a git → Settings → Developer settings → OAuth Apps → senin app
+
+**Authorization callback URL** şununla değiştir:
+```
+https://decap-oauth.netlify.app/callback
