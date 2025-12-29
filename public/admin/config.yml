@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: osmantsdmr/osmantasdemir-website
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "projeler"
+    label: "Projeler"
+    folder: "src/content/projeler"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "baslik", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Kategori", name: "kategori", widget: "select", options: ["CBS", "Otomasyon", "Uzaktan Algılama"] }
+      - { label: "Tarih", name: "tarih", widget: "string" }
+      - { label: "Kısa Açıklama", name: "aciklama", widget: "text" }
+      - { label: "Detaylı Açıklama", name: "detay", widget: "text" }
+      - { label: "Ana Görsel", name: "anaGorsel", widget: "image", required: false }
+      - { label: "Teknolojiler", name: "teknolojiler", widget: "list" }
+      - { label: "Özellikler", name: "ozellikler", widget: "list" }
+
+  - name: "blog"
+    label: "Blog Yazıları"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "baslik", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Tarih", name: "tarih", widget: "datetime" }
+      - { label: "Özet", name: "ozet", widget: "text" }
+      - { label: "Kapak Görseli", name: "kapakGorseli", widget: "image", required: false }
+      - { label: "İçerik", name: "body", widget: "markdown" }
