@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const projeler = [
+    {
+      slug: "izmir-arazi-kullanim",
+      baslik: "İzmir Arazi Kullanım Analizi",
+      kategori: "CBS",
+      tarih: "2024",
+      aciklama: "İzmir ili için çok zamanlı arazi kullanım değişim analizi ve haritalama projesi.",
+      detay: "Bu projede İzmir ilinin 2010-2024 yılları arasındaki arazi kullanım değişimleri analiz edilmiştir. Uydu görüntüleri kullanılarak kentsel yayılma, tarım alanlarındaki değişimler ve doğal alanların durumu incelenmiştir.",
+      teknolojiler: ["ArcGIS Pro", "Uzaktan Algılama", "Python", "Landsat"],
+      ozellikler: ["Çok zamanlı uydu görüntüsü analizi", "Arazi örtüsü sınıflandırması", "Değişim tespiti haritaları", "İstatistiksel raporlama"]
+    },
+    {
+      slug: "whatsapp-bot",
+      baslik: "WhatsApp Bot Asistanı",
+      kategori: "Otomasyon",
+      tarih: "2024",
+      aciklama: "n8n kullanarak geliştirilen otomatik müşteri destek ve bilgilendirme botu.",
+      detay: "Küçük işletmeler için tasarlanmış bu bot, müşteri sorularını otomatik yanıtlar, randevu oluşturur ve bilgilendirme mesajları gönderir.",
+      teknolojiler: ["n8n", "WhatsApp API", "Webhook", "Node.js"],
+      ozellikler: ["Otomatik mesaj yanıtlama", "Randevu yönetimi", "Müşteri bilgi toplama", "Raporlama sistemi"]
+    },
+    {
+      slug: "sel-risk-haritasi",
+      baslik: "Sel Risk Haritalaması",
+      kategori: "CBS",
+      tarih: "2024",
+      aciklama: "DEM verileri kullanarak sel risk alanlarının belirlenmesi ve haritalanması.",
+      detay: "Yüksek çözünürlüklü DEM verileri kullanılarak havza analizi yapılmış ve sel riski taşıyan alanlar belirlenmiştir.",
+      teknolojiler: ["QGIS", "DEM Analizi", "Hidroloji", "Python"],
+      ozellikler: ["Havza analizi", "Akış yönü hesaplama", "Risk zonları belirleme", "3D görselleştirme"]
+    },
+    {
+      slug: "tarimsal-verimlilik",
+      baslik: "Tarımsal Verimlilik Analizi",
+      kategori: "Uzaktan Algılama",
+      tarih: "2024",
+      aciklama: "NDVI analizi ile tarım alanlarının verimlilik değerlendirmesi.",
+      detay: "Sentinel-2 uydu görüntüleri kullanılarak tarım alanlarının bitki sağlığı ve verimlilik durumu analiz edilmiştir.",
+      teknolojiler: ["Google Earth Engine", "Sentinel-2", "NDVI", "JavaScript"],
+      ozellikler: ["NDVI hesaplama", "Zaman serisi analizi", "Verimlilik haritaları", "Otomatik raporlama"]
+    },
+    {
+      slug: "mekansal-karar-destek",
+      baslik: "Mekansal Karar Destek Sistemi",
+      kategori: "CBS",
+      tarih: "2024",
+      aciklama: "Yeni tesis yeri seçimi için çok kriterli mekansal analiz sistemi.",
+      detay: "AHP yöntemi kullanılarak çoklu kriterlere göre en uygun tesis yeri belirlenmiştir.",
+      teknolojiler: ["ArcGIS", "AHP", "Mekansal Analiz", "Model Builder"],
+      ozellikler: ["Çok kriterli analiz", "Ağırlıklı bindirme", "Uygunluk haritaları", "Senaryo karşılaştırma"]
+    },
+    {
+      slug: "veri-toplama-otomasyon",
+      baslik: "Veri Toplama Otomasyonu",
+      kategori: "Otomasyon",
+      tarih: "2024",
+      aciklama: "Web scraping ve API entegrasyonu ile otomatik veri toplama sistemi.",
+      detay: "Farklı kaynaklardan otomatik veri toplayan ve düzenleyen bir sistem geliştirilmiştir.",
+      teknolojiler: ["n8n", "API", "Veritabanı", "Python"],
+      ozellikler: ["Otomatik veri çekme", "Veri temizleme", "Veritabanı entegrasyonu", "Zamanlanmış görevler"]
+    }
+  ];
+
+  return projeler.map((proje) => ({
+    params: { slug: proje.slug },
+    props: { proje }
+  }));
+}
+
+const { proje } = Astro.props;
+---
+
+<Layout title={`${proje.baslik} | Osman Taşdemir`}>
+  
+  <!-- Hero -->
+  <section style="padding-top: 120px; padding-bottom: 40px; background-color: #37353E;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      
+      <a href="/projeler" style="color: #D3DAD9; opacity: 0.7; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px;">
+        ← Projelere Dön
+      </a>
+
+      <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+        <span style="background-color: #57564F; color: #D3DAD9; padding: 6px 14px; border-radius: 20px; font-size: 14px;">
+          {proje.kategori}
+        </span>
+        <span style="color: #D3DAD9; opacity: 0.5; font-size: 14px; line-height: 32px;">{proje.tarih}</span>
+      </div>
+
+      <h1 style="font-size: 42px; font-weight: bold; color: #D3DAD9; margin-bottom: 15px;">
+        {proje.baslik}
+      </h1>
+
+      <p style="color: #D3DAD9; opacity: 0.7; font-size: 18px; max-width: 800px;">
+        {proje.aciklama}
+      </p>
+    </div>
+  </section>
+
+  <!-- İçerik -->
+  <section style="padding: 60px 0; background-color: #1a1a1a;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      
+      <!-- Ana Görsel -->
+      <div style="background: linear-gradient(135deg, #44444E, #57564F); border-radius: 12px; height: 400px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+        <span style="color: #D3DAD9; opacity: 0.3; font-size: 18px;">Ana Proje Görseli</span>
+      </div>
+
+      <!-- Galeri -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 60px;">
+        <div style="background: linear-gradient(135deg, #44444E, #37353E); border-radius: 8px; height: 120px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #D3DAD9; opacity: 0.3; font-size: 12px;">Görsel 1</span>
+        </div>
+        <div style="background: linear-gradient(135deg, #44444E, #37353E); border-radius: 8px; height: 120px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #D3DAD9; opacity: 0.3; font-size: 12px;">Görsel 2</span>
+        </div>
+        <div style="background: linear-gradient(135deg, #44444E, #37353E); border-radius: 8px; height: 120px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #D3DAD9; opacity: 0.3; font-size: 12px;">Görsel 3</span>
+        </div>
+        <div style="background: linear-gradient(135deg, #44444E, #37353E); border-radius: 8px; height: 120px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #D3DAD9; opacity: 0.3; font-size: 12px;">Görsel 4</span>
+        </div>
+      </div>
+
+      <!-- İki Sütun -->
+      <div style="display: flex; gap: 50px; flex-wrap: wrap;">
+        
+        <!-- Sol Taraf -->
+        <div style="flex: 2; min-width: 300px;">
+          
+          <h2 style="font-size: 28px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px;">Proje Hakkında</h2>
+          <p style="color: #D3DAD9; opacity: 0.7; line-height: 1.8; margin-bottom: 40px;">
+            {proje.detay}
+          </p>
+
+          <h2 style="font-size: 28px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px;">Özellikler</h2>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            {proje.ozellikler.map((ozellik) => (
+              <li style="color: #D3DAD9; opacity: 0.7; padding: 10px 0; display: flex; align-items: center; gap: 12px;">
+                <span style="color: #57564F; font-size: 18px;">✓</span>
+                {ozellik}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Sağ Taraf - Sidebar -->
+        <div style="flex: 1; min-width: 280px;">
+          
+          <!-- Teknolojiler Kutusu -->
+          <div style="background-color: #37353E; border-radius: 12px; padding: 25px; margin-bottom: 20px;">
+            <h3 style="font-size: 18px; font-weight: 600; color: #D3DAD9; margin-bottom: 20px;">Kullanılan Teknolojiler</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              {proje.teknolojiler.map((tech) => (
+                <span style="background-color: #44444E; color: #D3DAD9; padding: 10px 16px; border-radius: 8px; font-size: 14px;">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- İletişim Kutusu -->
+          <div style="background-color: #44444E; border-radius: 12px; padding: 25px;">
+            <h3 style="font-size: 18px; font-weight: 600; color: #D3DAD9; margin-bottom: 10px;">Benzer Proje mi İstiyorsunuz?</h3>
+            <p style="color: #D3DAD9; opacity: 0.6; font-size: 14px; margin-bottom: 20px;">
+              Bu tarz bir proje için benimle iletişime geçebilirsiniz.
+            </p>
+            <a href="/#iletisim" style="display: block; text-align: center; background-color: #57564F; color: #D3DAD9; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: 500;">
+              İletişime Geç
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>

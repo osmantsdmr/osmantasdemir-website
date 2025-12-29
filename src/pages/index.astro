@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Osman Taşdemir | CBS & Otomasyon">
+  
+  <!-- Hero Section - Tam Ekran -->
+  <section class="h-screen flex items-center justify-center bg-gradient-to-br from-[#37353E] to-[#1a1a1a] relative overflow-hidden">
+    
+    <!-- Arka plan efekti -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-20 left-20 w-72 h-72 bg-[#57564F] rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-[#44444E] rounded-full blur-3xl"></div>
+    </div>
+    
+    <!-- İçerik -->
+    <div class="text-center z-10 px-4">
+      <p class="text-[#D3DAD9]/70 text-lg mb-4 tracking-widest uppercase">Merhaba, ben</p>
+      <h1 class="text-5xl md:text-7xl font-bold text-[#D3DAD9] mb-6">
+        Osman Taşdemir
+      </h1>
+      <p class="text-xl md:text-2xl text-[#D3DAD9]/80 mb-8">
+        CBS Uzmanı & Otomasyon Geliştiricisi
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="#hakkimda" class="px-8 py-3 bg-[#57564F] hover:bg-[#6a695f] text-[#D3DAD9] rounded-lg transition-all duration-300 hover:scale-105">
+          Hakkımda
+        </a>
+        <a href="#projeler" class="px-8 py-3 border border-[#D3DAD9]/30 hover:border-[#D3DAD9] text-[#D3DAD9] rounded-lg transition-all duration-300 hover:scale-105">
+          Projelerim
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll göstergesi -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-[#D3DAD9]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Hakkımda Section -->
+  <section id="hakkimda" class="min-h-screen flex items-center bg-[#44444E] py-20">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        
+        <!-- Sol: Metin -->
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold text-[#D3DAD9] mb-6">
+            Hakkımda
+          </h2>
+          <div class="w-20 h-1 bg-[#57564F] mb-8"></div>
+          <p class="text-[#D3DAD9]/80 text-lg leading-relaxed mb-6">
+            Coğrafya bölümü son sınıf öğrencisiyim. Coğrafi Bilgi Sistemleri (CBS) 
+            alanında uzmanlaşıyor ve modern teknolojilerle mekansal çözümler üretiyorum.
+          </p>
+          <p class="text-[#D3DAD9]/80 text-lg leading-relaxed mb-8">
+            Aynı zamanda n8n ve çeşitli otomasyon araçlarıyla workflow çözümleri 
+            geliştiriyorum. ArcGIS, QGIS ve uzaktan algılama teknolojilerinde deneyimliyim.
+          </p>
+          
+          <!-- Yetenekler -->
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 bg-[#37353E] rounded-full text-sm text-[#D3DAD9]/90">ArcGIS Pro</span>
+            <span class="px-4 py-2 bg-[#37353E] rounded-full text-sm text-[#D3DAD9]/90">QGIS</span>
+            <span class="px-4 py-2 bg-[#37353E] rounded-full text-sm text-[#D3DAD9]/90">Uzaktan Algılama</span>
+            <span class="px-4 py-2 bg-[#37353E] rounded-full text-sm text-[#D3DAD9]/90">n8n</span>
+            <span class="px-4 py-2 bg-[#37353E] rounded-full text-sm text-[#D3DAD9]/90">Otomasyon</span>
+            <span class="px-4 py-2 bg-[#37353E] rounded-full text-sm text-[#D3DAD9]/90">Web GIS</span>
+          </div>
+        </div>
+        
+        <!-- Sağ: Görsel placeholder -->
+        <div class="flex justify-center">
+          <div class="w-72 h-72 md:w-96 md:h-96 bg-gradient-to-br from-[#57564F] to-[#37353E] rounded-2xl flex items-center justify-center">
+            <span class="text-[#D3DAD9]/50 text-lg">Fotoğraf Alanı</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Uzmanlık Alanları Section -->
+  <section id="uzmanlik" class="min-h-screen flex items-center bg-[#37353E] py-20">
+    <div class="container mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-[#D3DAD9] mb-6">
+          Uzmanlık Alanlarım
+        </h2>
+        <div class="w-20 h-1 bg-[#57564F] mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Kart 1: CBS -->
+        <div class="bg-[#44444E] p-8 rounded-2xl hover:scale-105 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-[#57564F] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-[#D3DAD9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-[#D3DAD9] mb-4">Coğrafi Bilgi Sistemleri</h3>
+          <p class="text-[#D3DAD9]/70">
+            ArcGIS ve QGIS ile mekansal analiz, harita üretimi ve CBS projelerinin yönetimi.
+          </p>
+        </div>
+
+        <!-- Kart 2: Uzaktan Algılama -->
+        <div class="bg-[#44444E] p-8 rounded-2xl hover:scale-105 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-[#57564F] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-[#D3DAD9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-[#D3DAD9] mb-4">Uzaktan Algılama</h3>
+          <p class="text-[#D3DAD9]/70">
+            Uydu görüntüleri analizi, arazi örtüsü sınıflandırma ve değişim tespiti.
+          </p>
+        </div>
+
+        <!-- Kart 3: Otomasyon -->
+        <div class="bg-[#44444E] p-8 rounded-2xl hover:scale-105 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-[#57564F] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-[#D3DAD9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-[#D3DAD9] mb-4">Workflow & Otomasyon</h3>
+          <p class="text-[#D3DAD9]/70">
+            n8n ile iş akışı otomasyonu, bot geliştirme ve süreç optimizasyonu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İletişim Section -->
+  <section id="iletisim" class="min-h-screen flex items-center bg-[#1a1a1a] py-20">
+    <div class="container mx-auto px-4 md:px-8 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-[#D3DAD9] mb-6">
+        İletişime Geçin
+      </h2>
+      <div class="w-20 h-1 bg-[#57564F] mx-auto mb-8"></div>
+      <p class="text-[#D3DAD9]/70 text-lg mb-12 max-w-2xl mx-auto">
+        Projeleriniz için benimle iletişime geçebilirsiniz. CBS çözümleri, 
+        otomasyon projeleri veya iş birliği için her zaman açığım.
+      </p>
+      
+      <a href="mailto:ornek@email.com" class="inline-block px-10 py-4 bg-[#57564F] hover:bg-[#6a695f] text-[#D3DAD9] text-lg rounded-xl transition-all duration-300 hover:scale-105">
+        E-posta Gönder
+      </a>
+      
+      <!-- Sosyal Medya -->
+      <div class="flex justify-center gap-6 mt-12">
+        <a href="#" class="w-12 h-12 bg-[#44444E] hover:bg-[#57564F] rounded-full flex items-center justify-center transition-colors">
+          <svg class="w-5 h-5 text-[#D3DAD9]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="#" class="w-12 h-12 bg-[#44444E] hover:bg-[#57564F] rounded-full flex items-center justify-center transition-colors">
+          <svg class="w-5 h-5 text-[#D3DAD9]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
