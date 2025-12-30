@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const blogYazilari = await getCollection('blog');
   return blogYazilari.map((yazi) => ({
-    params: { slug: yazi.data.slug },
+    params: { slug: yazi.slug },
     props: { yazi },
   }));
 }

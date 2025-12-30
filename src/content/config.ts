@@ -4,7 +4,7 @@ const projeler = defineCollection({
   type: 'content',
   schema: z.object({
     baslik: z.string(),
-    slug: z.string(),
+    slug: z.string().optional(),
     kategori: z.string(),
     tarih: z.string(),
     aciklama: z.string(),
@@ -18,8 +18,8 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     baslik: z.string(),
-    slug: z.string(),
-    tarih: z.date(),
+    slug: z.string().optional(),
+    tarih: z.coerce.date(),
     ozet: z.string(),
   }),
 });

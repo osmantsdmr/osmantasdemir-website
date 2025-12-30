@@ -27,7 +27,7 @@ const projeler = await getCollection('projeler');
         ) : (
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
             {projeler.map((proje) => (
-              <a href={`/projeler/${proje.data.slug}`} style="text-decoration: none;">
+              <a href={`/projeler/${proje.slug}`} style="text-decoration: none;">
                 <article style="background: #37353E; border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
                   <div style="height: 200px; background: linear-gradient(135deg, #57564F 0%, #37353E 100%); display: flex; align-items: center; justify-content: center;">
                     <span style="color: #D3DAD9; opacity: 0.5; font-size: 14px;">Proje Görseli</span>

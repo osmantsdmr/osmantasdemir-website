@@ -28,7 +28,7 @@ const siraliYazilar = blogYazilari.sort((a, b) => new Date(b.data.tarih).getTime
         ) : (
           <div style="display: flex; flex-direction: column; gap: 24px;">
             {siraliYazilar.map((yazi) => (
-              <a href={`/blog/${yazi.data.slug}`} style="text-decoration: none;">
+              <a href={`/blog/${yazi.slug}`} style="text-decoration: none;">
                 <article style="background: #37353E; border-radius: 12px; padding: 32px; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
                   <time style="font-size: 14px; color: #57564F; margin-bottom: 8px; display: block;">
                     {new Date(yazi.data.tarih).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}
