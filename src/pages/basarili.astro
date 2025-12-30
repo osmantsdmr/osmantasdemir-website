@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<Layout title="Mesaj Gönderildi | Osman Taşdemir">
+  <Navbar />
+  
+  <main style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%); padding: 20px;">
+    <div style="text-align: center; max-width: 500px;">
+      <div style="font-size: 64px; margin-bottom: 24px;">✅</div>
+      <h1 style="font-size: 36px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">
+        Mesajınız Gönderildi!
+      </h1>
+      <p style="font-size: 18px; color: #D3DAD9; opacity: 0.8; margin-bottom: 32px; line-height: 1.6;">
+        Teşekkürler! En kısa sürede size geri dönüş yapacağım.
+      </p>
+      <a href="/" style="display: inline-block; background: #57564F; color: #D3DAD9; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background 0.3s;">
+        Ana Sayfaya Dön
+      </a>
+    </div>
+  </main>
+</Layout>

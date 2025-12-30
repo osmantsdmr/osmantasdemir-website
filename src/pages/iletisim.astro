@@ -77,7 +77,7 @@ import Navbar from '../components/Navbar.astro';
             Mesaj Gönder
           </h2>
           
-          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 20px;">
+          <form name="contact" method="POST" action="/basarili" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 20px;">
             <input type="hidden" name="form-name" value="contact" />
             <p style="display: none;">
               <label>Don't fill this out: <input name="bot-field" /></label>
