@@ -34,10 +34,36 @@ const { Content } = await proje.render();
         </p>
       </header>
 
-      <!-- Hero Image Placeholder -->
-      <div style="height: 400px; background: linear-gradient(135deg, #57564F 0%, #44444E 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px;">
-        <span style="color: #D3DAD9; opacity: 0.5;">Proje Görseli</span>
-      </div>
+      <!-- Hero Image -->
+      {proje.data.kapakGorseli ? (
+        <img 
+          src={proje.data.kapakGorseli} 
+          alt={proje.data.baslik}
+          style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;"
+        />
+      ) : (
+        <div style="height: 400px; background: linear-gradient(135deg, #57564F 0%, #44444E 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px;">
+          <span style="color: #D3DAD9; opacity: 0.5;">Proje Görseli</span>
+        </div>
+      )}
+
+      <!-- Gallery -->
+      {proje.data.galeri && proje.data.galeri.length > 0 && (
+        <section style="margin-bottom: 40px;">
+          <h2 style="font-size: 24px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">Galeri</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+            {proje.data.galeri.map((item) => (
+              <img 
+                src={item.gorsel} 
+                alt="Proje görseli"
+                style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.3s;"
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
       <!-- Description -->
       <section style="margin-bottom: 40px;">

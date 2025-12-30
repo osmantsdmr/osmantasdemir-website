@@ -19,6 +19,7 @@ collections:
       - label: Slug
         name: slug
         widget: string
+        hint: "URL için kısa isim (örn: izmir-cbs-projesi)"
       - label: Kategori
         name: kategori
         widget: select
@@ -29,18 +30,37 @@ collections:
       - label: Tarih
         name: tarih
         widget: string
+        hint: "Örn: 2024"
+      - label: Kapak Görseli
+        name: kapakGorseli
+        widget: image
+        required: false
+        hint: "Proje kartında görünecek görsel"
+      - label: Galeri
+        name: galeri
+        widget: list
+        required: false
+        field:
+          label: Görsel
+          name: gorsel
+          widget: image
       - label: Kısa Açıklama
         name: aciklama
         widget: text
+        hint: "Proje listesinde görünecek kısa açıklama"
       - label: Detaylı Açıklama
         name: detay
         widget: text
+        hint: "Proje sayfasında görünecek detaylı açıklama"
       - label: Teknolojiler
         name: teknolojiler
         widget: list
+        hint: "Her satıra bir teknoloji yazın"
       - label: Özellikler
         name: ozellikler
         widget: list
+        hint: "Projenin öne çıkan özellikleri"
+
   - name: blog
     label: Blog Yazıları
     folder: src/content/blog
@@ -54,12 +74,18 @@ collections:
       - label: Slug
         name: slug
         widget: string
+        hint: "URL için kısa isim (örn: cbs-nedir)"
       - label: Tarih
         name: tarih
         widget: datetime
+      - label: Kapak Görseli
+        name: kapakGorseli
+        widget: image
+        required: false
       - label: Özet
         name: ozet
         widget: text
+        hint: "Blog listesinde görünecek kısa özet"
       - label: İçerik
         name: body
         widget: markdown
