@@ -5,50 +5,64 @@ backend:
   auth_type: pkce
   app_id: Ov23li8v4VOVSYzjwps8
 
-media_folder: "public/images"
-public_folder: "/images"
+media_folder: public/images
+public_folder: /images
 
 collections:
-  - name: "projeler"
-    label: "Projeler"
-    folder: "src/content/projeler"
+  - name: projeler
+    label: Projeler
+    folder: src/content/projeler
     create: true
     slug: "{{slug}}"
-    extension: "md"
+    extension: md
     fields:
-      - { label: "Başlık", name: "baslik", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Kategori", name: "kategori", widget: "select", options: ["CBS", "Otomasyon", "Uzaktan Algılama"] }
-      - { label: "Tarih", name: "tarih", widget: "string" }
-      - { label: "Kısa Açıklama", name: "aciklama", widget: "text" }
-      - { label: "Detaylı Açıklama", name: "detay", widget: "text" }
-      - { label: "Teknolojiler", name: "teknolojiler", widget: "list" }
-      - { label: "Özellikler", name: "ozellikler", widget: "list" }
-
-  - name: "blog"
-    label: "Blog Yazıları"
-    folder: "src/content/blog"
+      - label: Başlık
+        name: baslik
+        widget: string
+      - label: Slug
+        name: slug
+        widget: string
+      - label: Kategori
+        name: kategori
+        widget: select
+        options:
+          - CBS
+          - Otomasyon
+          - Uzaktan Algılama
+      - label: Tarih
+        name: tarih
+        widget: string
+      - label: Kısa Açıklama
+        name: aciklama
+        widget: text
+      - label: Detaylı Açıklama
+        name: detay
+        widget: text
+      - label: Teknolojiler
+        name: teknolojiler
+        widget: list
+      - label: Özellikler
+        name: ozellikler
+        widget: list
+  - name: blog
+    label: Blog Yazıları
+    folder: src/content/blog
     create: true
     slug: "{{slug}}"
-    extension: "md"
+    extension: md
     fields:
-      - { label: "Başlık", name: "baslik", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Tarih", name: "tarih", widget: "datetime" }
-      - { label: "Özet", name: "ozet", widget: "text" }
-      - { label: "İçerik", name: "body", widget: "markdown" }
-```
-
-⚠️ **Önemli:** `Ov23li8v4VOVSYzjwps8` yazan yere GitHub OAuth App'ten aldığın **Client ID**'yi yapıştır!
-
-**Ctrl + S** ile kaydet.
-
----
-
-## Adım 2: GitHub OAuth App Callback URL Güncelle
-
-GitHub → Settings → Developer settings → OAuth Apps → senin app
-
-**Authorization callback URL** şununla değiştir:
-```
-https://api.netlify.com/auth/done
+      - label: Başlık
+        name: baslik
+        widget: string
+      - label: Slug
+        name: slug
+        widget: string
+      - label: Tarih
+        name: tarih
+        widget: datetime
+      - label: Özet
+        name: ozet
+        widget: text
+      - label: İçerik
+        name: body
+        widget: markdown
