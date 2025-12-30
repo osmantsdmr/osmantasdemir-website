@@ -1,157 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import { getCollection } from 'astro:content';
 
-// Örnek projeler (sonra CMS'den gelecek)
-const projeler = [
-  {
-    id: 1,
-    baslik: "İzmir Arazi Kullanım Analizi",
-    kategori: "CBS",
-    aciklama: "İzmir ili için çok zamanlı arazi kullanım değişim analizi ve haritalama projesi.",
-    teknolojiler: ["ArcGIS Pro", "Uzaktan Algılama", "Python"],
-    slug: "izmir-arazi-kullanim"
-  },
-  {
-    id: 2,
-    baslik: "WhatsApp Bot Asistanı",
-    kategori: "Otomasyon",
-    aciklama: "n8n kullanarak geliştirilen otomatik müşteri destek ve bilgilendirme botu.",
-    teknolojiler: ["n8n", "WhatsApp API", "Webhook"],
-    slug: "whatsapp-bot"
-  },
-  {
-    id: 3,
-    baslik: "Sel Risk Haritalaması",
-    kategori: "CBS",
-    aciklama: "DEM verileri kullanarak sel risk alanlarının belirlenmesi ve haritalanması.",
-    teknolojiler: ["QGIS", "DEM Analizi", "Hidroloji"],
-    slug: "sel-risk-haritasi"
-  },
-  {
-    id: 4,
-    baslik: "Tarımsal Verimlilik Analizi",
-    kategori: "Uzaktan Algılama",
-    aciklama: "NDVI analizi ile tarım alanlarının verimlilik değerlendirmesi.",
-    teknolojiler: ["Google Earth Engine", "Sentinel-2", "NDVI"],
-    slug: "tarimsal-verimlilik"
-  },
-  {
-    id: 5,
-    baslik: "Mekansal Karar Destek Sistemi",
-    kategori: "CBS",
-    aciklama: "Yeni tesis yeri seçimi için çok kriterli mekansal analiz sistemi.",
-    teknolojiler: ["ArcGIS", "AHP", "Mekansal Analiz"],
-    slug: "mekansal-karar-destek"
-  },
-  {
-    id: 6,
-    baslik: "Veri Toplama Otomasyonu",
-    kategori: "Otomasyon",
-    aciklama: "Web scraping ve API entegrasyonu ile otomatik veri toplama sistemi.",
-    teknolojiler: ["n8n", "API", "Veritabanı"],
-    slug: "veri-toplama-otomasyon"
-  }
-];
+const projeler = await getCollection('projeler');
 ---
 
 <Layout title="Projeler | Osman Taşdemir">
+  <Navbar />
   
-  <!-- Hero Section -->
-  <section class="pt-32 pb-12 bg-[#37353E]">
-    <div class="container mx-auto px-4 md:px-8 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-[#D3DAD9] mb-4">
-        Projelerim
-      </h1>
-      <p class="text-[#D3DAD9]/70 text-lg max-w-2xl mx-auto">
+  <main>
+    <!-- Hero Section -->
+    <section style="padding: 140px 20px 60px; background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%); text-align: center;">
+      <h1 style="font-size: 42px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">Projelerim</h1>
+      <p style="font-size: 18px; color: #D3DAD9; opacity: 0.8; max-width: 600px; margin: 0 auto;">
         CBS, uzaktan algılama ve otomasyon alanlarında gerçekleştirdiğim projeler.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Filtre Butonları -->
-  <section class="py-6 bg-[#37353E] border-b border-[#D3DAD9]/10">
-    <div class="container mx-auto px-4 md:px-8">
-      <div class="flex flex-wrap justify-center gap-3">
-        <button class="px-5 py-2 rounded-full text-sm bg-[#57564F] text-[#D3DAD9]">
-          Tümü
-        </button>
-        <button class="px-5 py-2 rounded-full text-sm bg-[#44444E] text-[#D3DAD9]/70 hover:bg-[#57564F] hover:text-[#D3DAD9] transition-colors">
-          CBS
-        </button>
-        <button class="px-5 py-2 rounded-full text-sm bg-[#44444E] text-[#D3DAD9]/70 hover:bg-[#57564F] hover:text-[#D3DAD9] transition-colors">
-          Otomasyon
-        </button>
-        <button class="px-5 py-2 rounded-full text-sm bg-[#44444E] text-[#D3DAD9]/70 hover:bg-[#57564F] hover:text-[#D3DAD9] transition-colors">
-          Uzaktan Algılama
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projeler Grid -->
-  <section class="py-16 bg-[#1a1a1a]">
-    <div class="container mx-auto px-4 md:px-8">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Projects Grid -->
+    <section style="padding: 60px 20px; background-color: #44444E;">
+      <div style="max-width: 1200px; margin: 0 auto;">
         
-        {projeler.map((proje) => (
-          <a href={`/projeler/${proje.slug}`} class="block group">
-            <div class="bg-[#37353E] rounded-xl overflow-hidden hover:ring-2 hover:ring-[#57564F] transition-all duration-300">
-              
-              <!-- Proje Görseli Alanı -->
-              <div class="h-44 bg-gradient-to-br from-[#44444E] to-[#57564F] flex items-center justify-center">
-                <svg class="w-12 h-12 text-[#D3DAD9]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              
-              <!-- Proje Bilgileri -->
-              <div class="p-5">
-                <!-- Kategori -->
-                <span class="inline-block px-3 py-1 bg-[#44444E] text-[#D3DAD9]/70 text-xs rounded-full mb-3">
-                  {proje.kategori}
-                </span>
-                
-                <!-- Başlık -->
-                <h3 class="text-lg font-semibold text-[#D3DAD9] mb-2 group-hover:text-white transition-colors">
-                  {proje.baslik}
-                </h3>
-                
-                <!-- Açıklama -->
-                <p class="text-[#D3DAD9]/60 text-sm mb-4 line-clamp-2">
-                  {proje.aciklama}
-                </p>
-                
-                <!-- Teknolojiler -->
-                <div class="flex flex-wrap gap-2">
-                  {proje.teknolojiler.map((tech) => (
-                    <span class="px-2 py-1 bg-[#1a1a1a] text-[#D3DAD9]/50 text-xs rounded">
-                      {tech}
+        {projeler.length === 0 ? (
+          <p style="text-align: center; color: #D3DAD9; opacity: 0.7;">Henüz proje eklenmemiş.</p>
+        ) : (
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
+            {projeler.map((proje) => (
+              <a href={`/projeler/${proje.data.slug}`} style="text-decoration: none;">
+                <article style="background: #37353E; border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                  <div style="height: 200px; background: linear-gradient(135deg, #57564F 0%, #37353E 100%); display: flex; align-items: center; justify-content: center;">
+                    <span style="color: #D3DAD9; opacity: 0.5; font-size: 14px;">Proje Görseli</span>
+                  </div>
+                  <div style="padding: 24px;">
+                    <span style="display: inline-block; background: #57564F; color: #D3DAD9; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 12px;">
+                      {proje.data.kategori}
                     </span>
-                  ))}
-                </div>
-              </div>
-              
-            </div>
-          </a>
-        ))}
+                    <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 8px;">{proje.data.baslik}</h3>
+                    <p style="font-size: 14px; color: #D3DAD9; opacity: 0.7; margin-bottom: 16px; line-height: 1.6;">
+                      {proje.data.aciklama}
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                      {proje.data.teknolojiler?.slice(0, 3).map((tech) => (
+                        <span style="background: #44444E; color: #D3DAD9; padding: 4px 10px; border-radius: 6px; font-size: 12px;">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+        )}
         
       </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-16 bg-[#37353E]">
-    <div class="container mx-auto px-4 md:px-8 text-center">
-      <h2 class="text-2xl font-bold text-[#D3DAD9] mb-3">
-        Projeniz mi var?
-      </h2>
-      <p class="text-[#D3DAD9]/70 mb-6">
-        CBS veya otomasyon projeleriniz için benimle iletişime geçin.
-      </p>
-      <a href="/#iletisim" class="inline-block px-6 py-3 bg-[#57564F] hover:bg-[#6a695f] text-[#D3DAD9] rounded-lg transition-colors">
-        İletişime Geç
-      </a>
-    </div>
-  </section>
-
+    </section>
+  </main>
 </Layout>
+
+<style>
+  article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  }
+</style>
