@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import { getCollection } from 'astro:content';
+
+const blogYazilari = await getCollection('blog');
+const siraliYazilar = blogYazilari.sort((a, b) => new Date(b.data.tarih).getTime() - new Date(a.data.tarih).getTime());
+---
+
+<Layout title="Blog | Osman Taşdemir">
+  <Navbar />
+  
+  <main>
+    <!-- Hero Section -->
+    <section style="padding: 140px 20px 60px; background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%); text-align: center;">
+      <h1 style="font-size: 42px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">Blog</h1>
+      <p style="font-size: 18px; color: #D3DAD9; opacity: 0.8; max-width: 600px; margin: 0 auto;">
+        CBS, uzaktan algılama ve teknoloji hakkında yazılarım.
+      </p>
+    </section>
+
+    <!-- Blog Grid -->
+    <section style="padding: 60px 20px; background-color: #44444E; min-height: 50vh;">
+      <div style="max-width: 900px; margin: 0 auto;">
+        
+        {siraliYazilar.length === 0 ? (
+          <p style="text-align: center; color: #D3DAD9; opacity: 0.7;">Henüz blog yazısı eklenmemiş.</p>
+        ) : (
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            {siraliYazilar.map((yazi) => (
+              <a href={`/blog/${yazi.data.slug}`} style="text-decoration: none;">
+                <article style="background: #37353E; border-radius: 12px; padding: 32px; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                  <time style="font-size: 14px; color: #57564F; margin-bottom: 8px; display: block;">
+                    {new Date(yazi.data.tarih).toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  <h2 style="font-size: 24px; font-weight: bold; color: #D3DAD9; margin-bottom: 12px;">
+                    {yazi.data.baslik}
+                  </h2>
+                  <p style="font-size: 16px; color: #D3DAD9; opacity: 0.7; line-height: 1.6;">
+                    {yazi.data.ozet}
+                  </p>
+                  <span style="display: inline-block; margin-top: 16px; color: #57564F; font-size: 14px;">
+                    Devamını oku →
+                  </span>
+                </article>
+              </a>
+            ))}
+          </div>
+        )}
+        
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  }
+</style>
