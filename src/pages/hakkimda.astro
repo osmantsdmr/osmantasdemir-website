@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<Layout title="Hakkımda | Osman Taşdemir">
+  <Navbar />
+  
+  <main>
+    <!-- Hero Section -->
+    <section style="padding: 140px 20px 60px; background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%);">
+      <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
+        
+        <!-- Profil Fotoğrafı -->
+        <div style="flex: 0 0 280px;">
+          <div style="width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 4px solid #57564F;">
+            <!-- Fotoğrafını ekledikten sonra src'yi değiştir -->
+            <img 
+              src="/images/profil.jpg" 
+              alt="Osman Taşdemir"
+              style="width: 100%; height: 100%; object-fit: cover;"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg, #57564F 0%, #37353E 100%);display:flex;align-items:center;justify-content:center;color:#D3DAD9;font-size:64px;font-weight:bold;\'>OT</div>'"
+            />
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div style="flex: 1; min-width: 300px;">
+          <h1 style="font-size: 42px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">
+            Osman Taşdemir
+          </h1>
+          <p style="font-size: 20px; color: #57564F; margin-bottom: 24px;">
+            CBS Uzmanı & Otomasyon Geliştiricisi
+          </p>
+          <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8; margin-bottom: 24px;">
+            İzmir Bakırçay Üniversitesi Coğrafya bölümü son sınıf öğrencisiyim. 
+            Coğrafi Bilgi Sistemleri (CBS), uzaktan algılama ve mekansal analiz konularında uzmanlaşıyorum. 
+            Aynı zamanda n8n ile workflow otomasyonu ve bot geliştirme alanlarında projeler gerçekleştiriyorum.
+          </p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="/projeler" style="display: inline-block; background: #57564F; color: #D3DAD9; padding: 12px 24px; border-radius: 8px; text-decoration: none; transition: background 0.3s;">
+              Projelerimi Gör
+            </a>
+            <a href="/iletisim" style="display: inline-block; background: transparent; color: #D3DAD9; padding: 12px 24px; border-radius: 8px; text-decoration: none; border: 2px solid #57564F; transition: background 0.3s;">
+              İletişime Geç
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Eğitim & Deneyim -->
+    <section style="padding: 80px 20px; background-color: #44444E;">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 style="font-size: 32px; font-weight: bold; color: #D3DAD9; margin-bottom: 40px; text-align: center;">
+          Eğitim
+        </h2>
+        
+        <div style="background: #37353E; border-radius: 12px; padding: 32px; margin-bottom: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 8px;">
+                İzmir Bakırçay Üniversitesi
+              </h3>
+              <p style="font-size: 16px; color: #57564F; margin-bottom: 8px;">
+                Coğrafya Bölümü (Lisans)
+              </p>
+              <p style="font-size: 14px; color: #D3DAD9; opacity: 0.7;">
+                CBS, Uzaktan Algılama, Mekansal Analiz, Kartografya
+              </p>
+            </div>
+            <span style="background: #57564F; color: #D3DAD9; padding: 6px 16px; border-radius: 20px; font-size: 14px;">
+              2021 - 2025
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Yetenekler -->
+    <section style="padding: 80px 20px; background-color: #37353E;">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 style="font-size: 32px; font-weight: bold; color: #D3DAD9; margin-bottom: 40px; text-align: center;">
+          Yetenekler
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px;">
+          
+          <!-- CBS Yetenekleri -->
+          <div style="background: #44444E; border-radius: 12px; padding: 28px;">
+            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 24px;">🗺️</span>
+              Coğrafi Bilgi Sistemleri
+            </h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">ArcGIS Pro</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">QGIS</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">ArcGIS Online</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Mekansal Analiz</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Kartografya</span>
+            </div>
+          </div>
+
+          <!-- Uzaktan Algılama -->
+          <div style="background: #44444E; border-radius: 12px; padding: 28px;">
+            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 24px;">🛰️</span>
+              Uzaktan Algılama
+            </h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Google Earth Engine</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Uydu Görüntü Analizi</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">NDVI</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Değişim Tespiti</span>
+            </div>
+          </div>
+
+          <!-- Otomasyon -->
+          <div style="background: #44444E; border-radius: 12px; padding: 28px;">
+            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 24px;">⚡</span>
+              Otomasyon & Geliştirme
+            </h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">n8n</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">WhatsApp Bot</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">API Entegrasyonu</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Workflow</span>
+            </div>
+          </div>
+
+          <!-- Diğer -->
+          <div style="background: #44444E; border-radius: 12px; padding: 28px;">
+            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+              <span style="font-size: 24px;">💻</span>
+              Diğer
+            </h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Git & GitHub</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">HTML/CSS</span>
+              <span style="background: #37353E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Veri Analizi</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 80px 20px; background: linear-gradient(135deg, #57564F 0%, #37353E 100%); text-align: center;">
+      <h2 style="font-size: 32px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">
+        Birlikte Çalışalım
+      </h2>
+      <p style="font-size: 18px; color: #D3DAD9; opacity: 0.8; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Projeniz için CBS analizi, otomasyon veya danışmanlık hizmeti almak ister misiniz?
+      </p>
+      <a href="/iletisim" style="display: inline-block; background: #D3DAD9; color: #37353E; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: transform 0.3s;">
+        İletişime Geç
+      </a>
+    </section>
+
+  </main>
+</Layout>
+
+<style>
+  a:hover {
+    transform: translateY(-2px);
+  }
+</style>
