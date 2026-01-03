@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
-
-const success = Astro.url.searchParams.get('success');
 ---
 
 <Layout title="İletişim | Osman Taşdemir">
@@ -21,14 +19,12 @@ const success = Astro.url.searchParams.get('success');
     <section style="padding: 80px 20px; background-color: #44444E;">
       <div style="max-width: 1000px; margin: 0 auto;">
         
-        <!-- Başarı Mesajı -->
-        {success && (
-          <div style="background: #4a7c59; color: #D3DAD9; padding: 24px; border-radius: 12px; text-align: center; margin-bottom: 40px;">
-            <span style="font-size: 32px; display: block; margin-bottom: 12px;">✅</span>
-            <strong style="font-size: 20px;">Mesajınız başarıyla gönderildi!</strong>
-            <p style="margin-top: 8px; opacity: 0.9;">En kısa sürede size dönüş yapacağım.</p>
-          </div>
-        )}
+        <!-- Başarı Mesajı (Gizli) -->
+        <div id="successMessage" style="display: none; background: #4a7c59; color: #D3DAD9; padding: 24px; border-radius: 12px; text-align: center; margin-bottom: 40px;">
+          <span style="font-size: 32px; display: block; margin-bottom: 12px;">✅</span>
+          <strong style="font-size: 20px;">Mesajınız başarıyla gönderildi!</strong>
+          <p style="margin-top: 8px; opacity: 0.9;">En kısa sürede size dönüş yapacağım.</p>
+        </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px;">
         
@@ -85,12 +81,12 @@ const success = Astro.url.searchParams.get('success');
           </div>
 
           <!-- Sağ: İletişim Formu -->
-          <div>
+          <div id="formContainer">
             <h2 style="font-size: 28px; font-weight: bold; color: #D3DAD9; margin-bottom: 32px;">
               Mesaj Gönder
             </h2>
             
-            <form name="contact" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 20px;">
+            <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 20px;">
               <input type="hidden" name="form-name" value="contact" />
               <p style="display: none;">
                 <label>Don't fill this out: <input name="bot-field" /></label>
@@ -158,9 +154,8 @@ const success = Astro.url.searchParams.get('success');
               <!-- Gönder Butonu -->
               <button 
                 type="submit"
+                id="submitBtn"
                 style="width: 100%; padding: 16px; background: #57564F; color: #D3DAD9; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s, transform 0.3s;"
-                onmouseover="this.style.background='#D3DAD9'; this.style.color='#37353E'"
-                onmouseout="this.style.background='#57564F'; this.style.color='#D3DAD9'"
               >
                 Gönder
               </button>
@@ -174,13 +169,49 @@ const success = Astro.url.searchParams.get('success');
   </main>
 </Layout>
 
+<script>
+  const form = document.getElementById('contactForm');
+  const successMessage = document.getElementById('successMessage');
+  const formContainer = document.getElementById('formContainer');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    submitBtn.textContent = 'Gönderiliyor...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+
+      if (response.ok) {
+        formContainer.style.display = 'none';
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        throw new Error('Form gönderilemedi');
+      }
+    } catch (error) {
+      alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+      submitBtn.textContent = 'Gönder';
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
 <style>
   a:hover {
     background: #57564F !important;
   }
   
-  input::placeholder, textarea::placeholder {
-    color: #D3DAD9;
-    opacity: 0.5;
+  #submitBtn:hover {
+    background: #D3DAD9 !important;
+    color: #37353E !important;
   }
 </style>
