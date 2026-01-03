@@ -2,8 +2,8 @@
 // Navbar Component
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-[#37353E]/95 backdrop-blur-sm">
-  <div class="container mx-auto px-4 md:px-8">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#37353E] border-b border-[#57564F]/30">
+  <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between h-16">
       
       <!-- Logo -->
@@ -23,82 +23,85 @@
 
       <!-- Language Switcher (Desktop) -->
       <div class="hidden md:flex items-center gap-2">
-        <button class="px-3 py-1 text-sm bg-[#57564F] text-[#D3DAD9] rounded">TR</button>
-        <button class="px-3 py-1 text-sm text-[#D3DAD9]/60 hover:text-[#D3DAD9] transition-colors">EN</button>
+        <span class="px-3 py-1 text-sm bg-[#57564F] text-[#D3DAD9] rounded">TR</span>
+        <span class="px-3 py-1 text-sm text-[#D3DAD9]/60">EN</span>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button id="mobileMenuBtn" class="md:hidden text-[#D3DAD9] p-2">
-        <svg id="hamburgerIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button type="button" id="mobile-menu-button" class="md:hidden text-[#D3DAD9] p-2 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <svg id="closeMenuIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
 
     </div>
   </div>
-
-  <!-- Mobile Menu Overlay -->
-  <div id="mobileMenuOverlay" class="md:hidden fixed inset-0 top-16 bg-[#37353E] hidden flex-col items-center justify-center gap-6 z-40">
-    <a href="/" class="mobile-nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors py-2">Ana Sayfa</a>
-    <a href="/hakkimda" class="mobile-nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors py-2">Hakkımda</a>
-    <a href="/projeler" class="mobile-nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors py-2">Projeler</a>
-    <a href="/hizmetler" class="mobile-nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors py-2">Hizmetler</a>
-    <a href="/blog" class="mobile-nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors py-2">Blog</a>
-    <a href="/iletisim" class="mobile-nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors py-2">İletişim</a>
-    
-    <!-- Language Switcher (Mobile) -->
-    <div class="flex items-center gap-4 mt-6">
-      <button class="px-4 py-2 bg-[#57564F] text-[#D3DAD9] rounded">TR</button>
-      <button class="px-4 py-2 text-[#D3DAD9]/60 hover:text-[#D3DAD9] transition-colors">EN</button>
-    </div>
-  </div>
 </nav>
 
+<!-- Mobile Menu (Ayrı, Nav dışında) -->
+<div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+  <!-- Arka plan overlay -->
+  <div class="absolute inset-0 bg-[#37353E]"></div>
+  
+  <!-- Menü içeriği -->
+  <div class="relative z-10 flex flex-col h-full">
+    <!-- Üst bar -->
+    <div class="flex items-center justify-between h-16 px-4 border-b border-[#57564F]/30">
+      <a href="/" class="text-xl font-bold text-[#D3DAD9]">
+        Osman<span class="text-[#57564F]">.</span>
+      </a>
+      <button type="button" id="close-menu-button" class="text-[#D3DAD9] p-2 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Linkler -->
+    <div class="flex-1 flex flex-col items-center justify-center gap-8">
+      <a href="/" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Ana Sayfa</a>
+      <a href="/hakkimda" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Hakkımda</a>
+      <a href="/projeler" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Projeler</a>
+      <a href="/hizmetler" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Hizmetler</a>
+      <a href="/blog" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Blog</a>
+      <a href="/iletisim" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">İletişim</a>
+      
+      <!-- Dil seçici -->
+      <div class="flex items-center gap-4 mt-8">
+        <span class="px-4 py-2 bg-[#57564F] text-[#D3DAD9] rounded">TR</span>
+        <span class="px-4 py-2 text-[#D3DAD9]/60">EN</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const hamburgerIcon = document.getElementById('hamburgerIcon');
-    const closeMenuIcon = document.getElementById('closeMenuIcon');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+  (function() {
+    var menuButton = document.getElementById('mobile-menu-button');
+    var closeButton = document.getElementById('close-menu-button');
+    var mobileMenu = document.getElementById('mobile-menu');
 
-    let menuOpen = false;
-
-    function openMenu() {
-      menuOpen = true;
-      mobileMenuOverlay.classList.remove('hidden');
-      mobileMenuOverlay.classList.add('flex');
-      hamburgerIcon.classList.add('hidden');
-      closeMenuIcon.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-      menuOpen = false;
-      mobileMenuOverlay.classList.add('hidden');
-      mobileMenuOverlay.classList.remove('flex');
-      hamburgerIcon.classList.remove('hidden');
-      closeMenuIcon.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', function() {
-        if (menuOpen) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', function() {
+        mobileMenu.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
       });
     }
 
-    mobileNavLinks.forEach(function(link) {
+    if (closeButton && mobileMenu) {
+      closeButton.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Linklere tıklayınca menüyü kapat
+    var links = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+    links.forEach(function(link) {
       link.addEventListener('click', function() {
-        closeMenu();
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
       });
     });
-  });
+  })();
 </script>
