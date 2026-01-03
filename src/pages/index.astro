@@ -4,6 +4,15 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Osman Taşdemir | CBS & Otomasyon">
   
+  <!-- Netlify Form Detection -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input name="bot-field" />
+    <input name="name" />
+    <input name="email" />
+    <input name="subject" />
+    <textarea name="message"></textarea>
+  </form>
+
   <!-- Hero Section - Tam Ekran -->
   <section class="h-screen flex items-center justify-center bg-gradient-to-br from-[#37353E] to-[#1a1a1a] relative overflow-hidden">
     
