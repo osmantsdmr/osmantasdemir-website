@@ -2,86 +2,112 @@
 // Navbar Component
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-[#37353E]/90 backdrop-blur-md border-b border-[#D3DAD9]/10">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#37353E]/95 backdrop-blur-sm">
   <div class="container mx-auto px-4 md:px-8">
     <div class="flex items-center justify-between h-16">
       
-      <!-- Logo / İsim -->
-      <a href="/" class="text-xl font-bold text-[#D3DAD9] hover:text-white transition-colors">
-        Osman<span class="text-[#8a8a7a]">.</span>
+      <!-- Logo -->
+      <a href="/" class="text-xl font-bold text-[#D3DAD9]">
+        Osman<span class="text-[#57564F]">.</span>
       </a>
 
-      <!-- Desktop Menü -->
+      <!-- Desktop Menu -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="/" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors">
-          Ana Sayfa
-        </a>
-        <a href="/hakkimda" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors">
-          Hakkımda
-        </a>
-        <a href="/projeler" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors">
-          Projeler
-        </a>
-        <a href="/hizmetler" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors">
-          Hizmetler
-        </a>
-        <a href="/blog" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors">
-          Blog
-        </a>
-        <a href="/iletisim" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors">
-          İletişim
-        </a>
+        <a href="/" class="text-[#D3DAD9]/80 hover:text-[#D3DAD9] transition-colors">Ana Sayfa</a>
+        <a href="/hakkimda" class="text-[#D3DAD9]/80 hover:text-[#D3DAD9] transition-colors">Hakkımda</a>
+        <a href="/projeler" class="text-[#D3DAD9]/80 hover:text-[#D3DAD9] transition-colors">Projeler</a>
+        <a href="/hizmetler" class="text-[#D3DAD9]/80 hover:text-[#D3DAD9] transition-colors">Hizmetler</a>
+        <a href="/blog" class="text-[#D3DAD9]/80 hover:text-[#D3DAD9] transition-colors">Blog</a>
+        <a href="/iletisim" class="text-[#D3DAD9]/80 hover:text-[#D3DAD9] transition-colors">İletişim</a>
       </div>
 
-      <!-- Dil Seçimi + Mobil Menü Butonu -->
-      <div class="flex items-center gap-4">
-        <!-- Dil Seçimi -->
-        <div class="flex items-center gap-1 text-sm">
-          <button class="px-2 py-1 text-[#D3DAD9] bg-[#57564F] rounded">TR</button>
-          <button class="px-2 py-1 text-[#D3DAD9]/50 hover:text-[#D3DAD9] transition-colors">EN</button>
-        </div>
-
-        <!-- Mobil Menü Butonu -->
-        <button id="mobile-menu-btn" class="md:hidden text-[#D3DAD9] p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+      <!-- Language Switcher (Desktop) -->
+      <div class="hidden md:flex items-center gap-2">
+        <button class="px-3 py-1 text-sm bg-[#57564F] text-[#D3DAD9] rounded">TR</button>
+        <button class="px-3 py-1 text-sm text-[#D3DAD9]/60 hover:text-[#D3DAD9] transition-colors">EN</button>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-[#D3DAD9] p-2 z-50 relative">
+        <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
     </div>
   </div>
 
-  <!-- Mobil Menü (Gizli) -->
-  <div id="mobile-menu" class="hidden md:hidden bg-[#37353E] border-t border-[#D3DAD9]/10">
-    <div class="container mx-auto px-4 py-4 flex flex-col gap-4">
-      <a href="/" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors py-2">
-        Ana Sayfa
-      </a>
-      <a href="#hakkimda" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors py-2">
-        Hakkımda
-      </a>
-      <a href="/projeler" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors py-2">
-        Projeler
-      </a>
-      <a href="/hizmetler" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors py-2">
-        Hizmetler
-      </a>
-      <a href="/blog" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors py-2">
-        Blog
-      </a>
-      <a href="#iletisim" class="text-[#D3DAD9]/70 hover:text-[#D3DAD9] transition-colors py-2">
-        İletişim
-      </a>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden fixed inset-0 top-16 bg-[#37353E] transform translate-x-full transition-transform duration-300 ease-in-out z-40">
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      <a href="/" class="nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors">Ana Sayfa</a>
+      <a href="/hakkimda" class="nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors">Hakkımda</a>
+      <a href="/projeler" class="nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors">Projeler</a>
+      <a href="/hizmetler" class="nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors">Hizmetler</a>
+      <a href="/blog" class="nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors">Blog</a>
+      <a href="/iletisim" class="nav-link text-2xl text-[#D3DAD9] hover:text-[#57564F] transition-colors">İletişim</a>
+      
+      <!-- Language Switcher (Mobile) -->
+      <div class="flex items-center gap-4 mt-8">
+        <button class="px-4 py-2 bg-[#57564F] text-[#D3DAD9] rounded">TR</button>
+        <button class="px-4 py-2 text-[#D3DAD9]/60 hover:text-[#D3DAD9] transition-colors">EN</button>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- Mobil Menü JavaScript -->
 <script>
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  const navLinks = document.querySelectorAll('.nav-link');
 
-  mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  let isOpen = false;
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    if (isOpen) {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      menuIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenu.classList.remove('translate-x-0');
+      menuIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function closeMenu() {
+    if (isOpen) {
+      isOpen = false;
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenu.classList.remove('translate-x-0');
+      menuIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Menu button click
+  menuBtn.addEventListener('click', toggleMenu);
+
+  // Close menu when clicking a link
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMenu();
+    }
   });
 </script>
