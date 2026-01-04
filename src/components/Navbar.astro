@@ -28,7 +28,11 @@
       </div>
 
       <!-- Mobile Menu Button -->
-      <button type="button" id="mobile-menu-button" class="md:hidden text-[#D3DAD9] p-2 focus:outline-none">
+      <button 
+        type="button" 
+        onclick="document.getElementById('mobile-menu').classList.remove('hidden'); document.body.style.overflow='hidden';"
+        class="md:hidden text-[#D3DAD9] p-2 focus:outline-none"
+      >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
@@ -38,35 +42,34 @@
   </div>
 </nav>
 
-<!-- Mobile Menu (Ayrı, Nav dışında) -->
+<!-- Mobile Menu -->
 <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
-  <!-- Arka plan overlay -->
   <div class="absolute inset-0 bg-[#37353E]"></div>
   
-  <!-- Menü içeriği -->
   <div class="relative z-10 flex flex-col h-full">
-    <!-- Üst bar -->
     <div class="flex items-center justify-between h-16 px-4 border-b border-[#57564F]/30">
       <a href="/" class="text-xl font-bold text-[#D3DAD9]">
         Osman<span class="text-[#57564F]">.</span>
       </a>
-      <button type="button" id="close-menu-button" class="text-[#D3DAD9] p-2 focus:outline-none">
+      <button 
+        type="button" 
+        onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow='';"
+        class="text-[#D3DAD9] p-2 focus:outline-none"
+      >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
     
-    <!-- Linkler -->
     <div class="flex-1 flex flex-col items-center justify-center gap-8">
-      <a href="/" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Ana Sayfa</a>
-      <a href="/hakkimda" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Hakkımda</a>
-      <a href="/projeler" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Projeler</a>
-      <a href="/hizmetler" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Hizmetler</a>
-      <a href="/blog" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Blog</a>
-      <a href="/iletisim" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">İletişim</a>
+      <a href="/" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow='';" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Ana Sayfa</a>
+      <a href="/hakkimda" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow='';" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Hakkımda</a>
+      <a href="/projeler" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow='';" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Projeler</a>
+      <a href="/hizmetler" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow='';" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Hizmetler</a>
+      <a href="/blog" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow='';" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">Blog</a>
+      <a href="/iletisim" onclick="document.getElementById('mobile-menu').classList.add('hidden'); document.body.style.overflow='';" class="text-2xl text-[#D3DAD9] hover:text-[#57564F]">İletişim</a>
       
-      <!-- Dil seçici -->
       <div class="flex items-center gap-4 mt-8">
         <span class="px-4 py-2 bg-[#57564F] text-[#D3DAD9] rounded">TR</span>
         <span class="px-4 py-2 text-[#D3DAD9]/60">EN</span>
@@ -74,52 +77,3 @@
     </div>
   </div>
 </div>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-  });
-
-  document.addEventListener('astro:page-load', function() {
-    initMobileMenu();
-  });
-
-  function initMobileMenu() {
-    var menuButton = document.getElementById('mobile-menu-button');
-    var closeButton = document.getElementById('close-menu-button');
-    var mobileMenu = document.getElementById('mobile-menu');
-
-    if (!menuButton || !mobileMenu || !closeButton) return;
-
-    var newMenuButton = menuButton.cloneNode(true);
-    var newCloseButton = closeButton.cloneNode(true);
-    menuButton.parentNode.replaceChild(newMenuButton, menuButton);
-    closeButton.parentNode.replaceChild(newCloseButton, closeButton);
-
-    newMenuButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      mobileMenu.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    });
-
-    newCloseButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      mobileMenu.classList.add('hidden');
-      document.body.style.overflow = '';
-    });
-
-    var links = mobileMenu.querySelectorAll('a');
-    links.forEach(function(link) {
-      link.addEventListener('click', function() {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    initMobileMenu();
-  }
-</script>
