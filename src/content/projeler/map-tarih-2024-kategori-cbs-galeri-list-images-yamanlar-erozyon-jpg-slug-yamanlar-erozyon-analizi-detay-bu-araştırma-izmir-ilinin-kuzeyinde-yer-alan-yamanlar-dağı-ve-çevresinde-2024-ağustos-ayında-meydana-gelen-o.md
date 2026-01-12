@@ -3,7 +3,7 @@ baslik: Orman Yangını Sonrası Erozyon Riski Analizi
 slug: yamanlar-erozyon-analizi
 kategori: CBS
 tarih: "2024"
-kapakGorseli: /images/yamanlar-erozyon-thumb.jpg
+kapakGorseli: /images/yamanlar-kapak-v2.jpg
 galeri: []
 aciklama: İzmir Yamanlar Dağı'nda 2024 orman yangını sonrası erozyon riskinin
   AHP yöntemi ve CBS teknikleri ile belirlenmesi. 35.819 hektar alanda risk
@@ -27,8 +27,7 @@ detay: >-
 
   İzmir Bakırçay Üniversitesi, Coğrafya Bölümü
 teknolojiler:
-  - ArcGIS Pro Google Earth Engine Landsat 8 OLI NDVI Analizi AHP Yöntemi Raster
-    Calculator
+  - ArcGIS Pro
 ozellikler:
   - 35.819 hektar alan analizi Çok kriterli karar analizi (AHP) Yangın
     öncesi-sonrası karşılaştırma 5 farklı risk sınıfı belirleme Akademik poster
