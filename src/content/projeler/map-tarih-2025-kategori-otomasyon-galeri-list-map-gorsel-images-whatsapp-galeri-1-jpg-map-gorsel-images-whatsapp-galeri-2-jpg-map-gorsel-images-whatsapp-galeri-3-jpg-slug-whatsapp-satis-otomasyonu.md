@@ -17,41 +17,25 @@ detay: >-
   tamamen otomatikleştiren yapay zeka destekli bir bot sistemi geliştirdim.
 
 
-
-
-  Nasıl Çalışır?
-
-
+  **Nasıl Çalışır?**
 
 
   Müşteri WhatsApp'tan mesaj gönderdiğinde sistem otomatik olarak devreye girer. İlk adımda müşterinin telefon numarası veritabanında aranır. Kayıtlı bir müşteriyse ismiyle selamlanır ve mevcut adresi teyit edilir. Yeni bir müşteriyse sırasıyla isim, adres ve sipariş bilgileri alınır.
 
 
-
-
-  Yapay Zeka Entegrasyonu
-
-
+  **Yapay Zeka Entegrasyonu**
 
 
   ChatGPT API entegrasyonu sayesinde bot, doğal bir şekilde sohbet edebilir. Müşteriler robot gibi komutlar yazmak yerine günlük konuşma diliyle sipariş verebilir. AI, ürün sorularını yanıtlar, önerilerde bulunur ve siparişi doğru formatta alır.
 
 
-
-
-  Akıllı Müşteri Yönetimi
-
-
+  **Akıllı Müşteri Yönetimi**
 
 
   Sistem her müşteriyle yapılan son 10 mesajı hafızasında tutar. Bu sayede kesintiye uğrayan konuşmalar kaldığı yerden devam eder. Sipariş tamamlandığında müşteri ve sipariş bilgileri otomatik olarak Google Sheets'e kaydedilir.
 
 
-
-
-  Avantajları
-
-
+  **Avantajları**
 
 
   \- 7/24 kesintisiz hizmet - Mesai saati yok
@@ -75,16 +59,10 @@ detay: >-
   \- Ölçeklenebilir - Sınırsız müşteriyle aynı anda iletişim
 
 
-
-
-  Her Sektöre Uyarlanabilir
-
-
+  **Her Sektöre Uyarlanabilir**
 
 
   Bu sistem; restoranlar, kafeler, fırınlar, online marketler, çiçekçiler, su dağıtımcıları, organik ürün satıcıları, pet shop'lar ve sipariş alan her türlü işletme için özelleştirilebilir.
-
-
 
 
   Teknik Altyapı: n8n workflow otomasyonu, WhatsApp Business API, ChatGPT API, Google Sheets entegrasyonu
