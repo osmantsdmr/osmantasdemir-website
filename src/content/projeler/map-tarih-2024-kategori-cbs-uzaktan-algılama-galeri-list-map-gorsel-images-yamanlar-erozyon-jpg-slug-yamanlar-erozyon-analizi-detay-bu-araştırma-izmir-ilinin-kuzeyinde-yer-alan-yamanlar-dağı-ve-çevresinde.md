@@ -4,7 +4,7 @@ slug: yamanlar-erozyon-analizi
 oneCikan: false
 kategori: CBS & Uzaktan Algılama
 tarih: "2024"
-kapakGorseli: /images/yamanlar-kapak-v2.jpg
+kapakGorseli: /images/gemini_generated_image_6v5cox6v5cox6v5c.png
 galeri:
   - gorsel: /images/yamanlar-erozyon.jpg
 aciklama: İzmir Yamanlar Dağı'nda 2024 orman yangını sonrası erozyon riskinin
