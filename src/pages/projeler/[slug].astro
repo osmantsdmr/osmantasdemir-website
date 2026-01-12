@@ -39,7 +39,9 @@ const { Content } = await proje.render();
         <img 
           src={proje.data.kapakGorseli} 
           alt={proje.data.baslik}
-          style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px;"
+          class="gallery-img"
+          data-index="0"
+          style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px; cursor: pointer;"
         />
       ) : (
         <div style="height: 400px; background: linear-gradient(135deg, #57564F 0%, #44444E 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px;">
@@ -52,13 +54,13 @@ const { Content } = await proje.render();
         <section style="margin-bottom: 40px;">
           <h2 style="font-size: 24px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">Galeri</h2>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
-            {proje.data.galeri.map((item) => (
+            {proje.data.galeri.map((item, index) => (
               <img 
                 src={item.gorsel} 
                 alt="Proje görseli"
+                class="gallery-img"
+                data-index={index + 1}
                 style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.3s;"
-                onmouseover="this.style.transform='scale(1.05)'"
-                onmouseout="this.style.transform='scale(1)'"
               />
             ))}
           </div>
@@ -68,7 +70,7 @@ const { Content } = await proje.render();
       <!-- Description -->
       <section style="margin-bottom: 40px;">
         <h2 style="font-size: 24px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">Proje Hakkında</h2>
-        <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8;">
+        <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8; white-space: pre-line;">
           {proje.data.detay}
         </p>
       </section>
@@ -109,4 +111,195 @@ const { Content } = await proje.render();
 
     </article>
   </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev">&#10094;</button>
+    <button class="lightbox-next" id="lightbox-next">&#10095;</button>
+    <img id="lightbox-img" src="" alt="Büyük görsel" />
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
 </Layout>
+
+<style>
+  .gallery-img:hover {
+    transform: scale(1.03);
+  }
+
+  /* Lightbox Styles */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #D3DAD9;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10001;
+  }
+
+  .lightbox-close:hover {
+    color: #fff;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 36px;
+    color: #D3DAD9;
+    background: rgba(87, 86, 79, 0.8);
+    border: none;
+    cursor: pointer;
+    padding: 16px 20px;
+    border-radius: 8px;
+    transition: background 0.3s;
+    z-index: 10001;
+  }
+
+  .lightbox-prev {
+    left: 20px;
+  }
+
+  .lightbox-next {
+    right: 20px;
+  }
+
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background: rgba(87, 86, 79, 1);
+  }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #D3DAD9;
+    font-size: 14px;
+    background: rgba(55, 53, 62, 0.8);
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .lightbox-prev,
+    .lightbox-next {
+      padding: 12px 16px;
+      font-size: 24px;
+    }
+
+    .lightbox-prev {
+      left: 10px;
+    }
+
+    .lightbox-next {
+      right: 10px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const galleryImages = document.querySelectorAll('.gallery-img');
+
+    let currentIndex = 0;
+    const images = Array.from(galleryImages).map(img => img.src);
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex];
+      lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      updateButtons();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        lightboxImg.src = images[currentIndex];
+        lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+        updateButtons();
+      }
+    }
+
+    function showNext() {
+      if (currentIndex < images.length - 1) {
+        currentIndex++;
+        lightboxImg.src = images[currentIndex];
+        lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+        updateButtons();
+      }
+    }
+
+    function updateButtons() {
+      lightboxPrev.style.opacity = currentIndex === 0 ? '0.3' : '1';
+      lightboxNext.style.opacity = currentIndex === images.length - 1 ? '0.3' : '1';
+    }
+
+    // Event Listeners
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+  });
+</script>
