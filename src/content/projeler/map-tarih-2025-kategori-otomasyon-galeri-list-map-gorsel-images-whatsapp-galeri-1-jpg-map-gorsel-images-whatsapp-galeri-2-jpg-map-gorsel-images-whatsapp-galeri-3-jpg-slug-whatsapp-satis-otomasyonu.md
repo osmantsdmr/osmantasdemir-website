@@ -4,7 +4,7 @@ slug: whatsapp-satis-otomasyonu
 oneCikan: true
 kategori: Otomasyon
 tarih: "2025"
-kapakGorseli: /images/whatsapp-kapak.jpg
+kapakGorseli: /images/gemini_generated_image_od5dhlod5dhlod5d.png
 galeri:
   - gorsel: /images/whatsapp-galeri-1.jpg
   - gorsel: /images/whatsapp-galeri-2.jpg
