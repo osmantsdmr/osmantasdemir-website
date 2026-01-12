@@ -27,6 +27,15 @@ collections:
           - CBS
           - Otomasyon
           - Uzaktan Algılama
+          - "CBS & Uzaktan Algılama"
+          - Web Geliştirme
+          - Mobil Uygulama
+          - Diğer
+      - label: Özel Kategori
+        name: ozelKategori
+        widget: string
+        required: false
+        hint: "Kategori 'Diğer' seçildiyse buraya yazın"
       - label: Tarih
         name: tarih
         widget: string
@@ -40,26 +49,35 @@ collections:
         name: galeri
         widget: list
         required: false
-        field:
-          label: Görsel
-          name: gorsel
-          widget: image
+        summary: "{{fields.gorsel}}"
+        fields:
+          - label: Görsel
+            name: gorsel
+            widget: image
       - label: Kısa Açıklama
         name: aciklama
         widget: text
         hint: "Proje listesinde görünecek kısa açıklama"
       - label: Detaylı Açıklama
         name: detay
-        widget: text
+        widget: markdown
         hint: "Proje sayfasında görünecek detaylı açıklama"
       - label: Teknolojiler
         name: teknolojiler
         widget: list
-        hint: "Her satıra bir teknoloji yazın"
+        hint: "Her öğe için + butonuna tıklayın"
+        field:
+          label: Teknoloji
+          name: teknoloji
+          widget: string
       - label: Özellikler
         name: ozellikler
         widget: list
-        hint: "Projenin öne çıkan özellikleri"
+        hint: "Her öğe için + butonuna tıklayın"
+        field:
+          label: Özellik
+          name: ozellik
+          widget: string
 
   - name: blog
     label: Blog Yazıları
