@@ -4,8 +4,7 @@ slug: yamanlar-erozyon-analizi
 kategori: CBS
 tarih: "2024"
 kapakGorseli: /images/yamanlar-erozyon-thumb.jpg
-galeri:
-  - /images/yamanlar-erozyon.jpg
+galeri: []
 aciklama: İzmir Yamanlar Dağı'nda 2024 orman yangını sonrası erozyon riskinin
   AHP yöntemi ve CBS teknikleri ile belirlenmesi. 35.819 hektar alanda risk
   analizi gerçekleştirildi.
