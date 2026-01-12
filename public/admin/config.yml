@@ -20,6 +20,11 @@ collections:
         name: slug
         widget: string
         hint: "URL için kısa isim (örn: izmir-cbs-projesi)"
+      - label: "⭐ Öne Çıkan"
+        name: oneCikan
+        widget: boolean
+        default: false
+        hint: "İşaretlenirse proje listesinde üstte görünür"
       - label: Kategori
         name: kategori
         widget: select

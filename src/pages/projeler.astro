@@ -4,6 +4,15 @@ import Navbar from '../components/Navbar.astro';
 import { getCollection } from 'astro:content';
 
 const projeler = await getCollection('projeler');
+
+// Önce öne çıkanlar, sonra diğerleri (tarihe göre yeniden eskiye)
+const siraliProjeler = projeler.sort((a, b) => {
+  // Önce öne çıkan durumuna göre sırala
+  if (a.data.oneCikan && !b.data.oneCikan) return -1;
+  if (!a.data.oneCikan && b.data.oneCikan) return 1;
+  // Aynı öne çıkan durumunda tarihe göre sırala (yeniden eskiye)
+  return (b.data.tarih || '').localeCompare(a.data.tarih || '');
+});
 ---
 
 <Layout title="Projeler | Osman Taşdemir">
@@ -22,13 +31,21 @@ const projeler = await getCollection('projeler');
     <section style="padding: 60px 20px; background-color: #44444E;">
       <div style="max-width: 1200px; margin: 0 auto;">
         
-        {projeler.length === 0 ? (
+        {siraliProjeler.length === 0 ? (
           <p style="text-align: center; color: #D3DAD9; opacity: 0.7;">Henüz proje eklenmemiş.</p>
         ) : (
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
-            {projeler.map((proje) => (
+            {siraliProjeler.map((proje) => (
               <a href={`/projeler/${proje.slug}`} style="text-decoration: none;">
-                <article style="background: #37353E; border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;">
+                <article style="background: #37353E; border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; position: relative;">
+                  
+                  {/* Öne Çıkan Yıldız */}
+                  {proje.data.oneCikan && (
+                    <div style="position: absolute; top: 12px; right: 12px; background: #D4AF37; color: #1a1a1a; padding: 6px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; z-index: 10; display: flex; align-items: center; gap: 4px;">
+                      <span>⭐</span> Öne Çıkan
+                    </div>
+                  )}
+                  
                   {proje.data.kapakGorseli ? (
                     <img 
                       src={proje.data.kapakGorseli} 
