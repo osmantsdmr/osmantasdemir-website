@@ -4,6 +4,7 @@ slug: seben-golu-degisim-analizi
 oneCikan: false
 kategori: Uzaktan Algılama
 tarih: "2024"
+kapakGorseli: /images/gemini_generated_image_4fzpmm4fzpmm4fzp.png
 galeri:
   - gorsel: /images/seben-galeri-1.jpg
   - gorsel: /images/seben-galeri-2.jpg
