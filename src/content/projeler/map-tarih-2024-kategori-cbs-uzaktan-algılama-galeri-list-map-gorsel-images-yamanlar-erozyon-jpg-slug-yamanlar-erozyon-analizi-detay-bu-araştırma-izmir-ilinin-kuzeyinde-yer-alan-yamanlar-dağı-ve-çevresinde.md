@@ -1,6 +1,7 @@
 ---
 baslik: Orman Yangını Sonrası Erozyon Riski Analizi
 slug: yamanlar-erozyon-analizi
+oneCikan: true
 kategori: CBS & Uzaktan Algılama
 tarih: "2024"
 kapakGorseli: /images/yamanlar-kapak-v2.jpg
