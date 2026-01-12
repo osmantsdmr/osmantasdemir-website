@@ -4,6 +4,7 @@ slug: kisisel-portfolyo-web-sitesi
 oneCikan: true
 kategori: Web Geliştirme
 tarih: 2025-2026
+kapakGorseli: /images/gemini_generated_image_ur1j4zur1j4zur1j.png
 galeri:
   - gorsel: /images/site-galeri-3.jpg
   - gorsel: /images/site-galeri-4.jpg
