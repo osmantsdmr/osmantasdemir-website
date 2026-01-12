@@ -4,7 +4,7 @@ slug: konya-gunes-enerjisi-analizi
 oneCikan: true
 kategori: CBS
 tarih: "2024"
-kapakGorseli: /images/613658336_1388072069680413_2302754858374329302_n.png
+kapakGorseli: /images/denemee.png
 galeri:
   - gorsel: /images/konya-gunes-galeri.jpg
   - gorsel: /images/konya-bulgular.png
