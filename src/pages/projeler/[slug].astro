@@ -29,9 +29,14 @@ const { Content } = await proje.render();
         <h1 style="font-size: 36px; font-weight: bold; color: #D3DAD9; margin-bottom: 12px;">
           {proje.data.baslik}
         </h1>
-        <p style="font-size: 16px; color: #D3DAD9; opacity: 0.7;">
+        <p style="font-size: 16px; color: #D3DAD9; opacity: 0.7; margin-bottom: 16px;">
           {proje.data.tarih}
         </p>
+        {proje.data.aciklama && (
+          <p style="font-size: 18px; color: #D3DAD9; opacity: 0.9; line-height: 1.7; border-left: 3px solid #57564F; padding-left: 16px;">
+            {proje.data.aciklama}
+          </p>
+        )}
       </header>
 
       <!-- Hero Image -->
