@@ -228,6 +228,21 @@ const schemaData = {
 </Layout>
 
 <style>
+  /* Başlık linklerini normal göster */
+.prose :global(h2 a),
+.prose :global(h3 a),
+.prose :global(h4 a) {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.prose :global(h2 a:hover),
+.prose :global(h3 a:hover),
+.prose :global(h4 a:hover) {
+  color: inherit;
+  border-bottom: none;
+}
   /* TOC sidebar sadece desktop'ta */
   .toc-sidebar {
     display: none;
