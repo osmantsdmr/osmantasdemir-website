@@ -1,0 +1,94 @@
+---
+interface BlogPost {
+  slug: string;
+  data: {
+    baslik: string;
+    tarih: Date;
+    kapakGorseli?: string;
+    ozet: string;
+    kategori?: string;
+    etiketler?: string[];
+  };
+}
+
+interface Props {
+  currentSlug: string;
+  currentKategori?: string;
+  tumYazilar: BlogPost[];
+}
+
+const { currentSlug, currentKategori, tumYazilar } = Astro.props;
+
+// İlgili yazıları bul (aynı kategoriden veya en son yazılar)
+let ilgiliYazilar = tumYazilar
+  .filter((yazi) => yazi.slug !== currentSlug)
+  .filter((yazi) => {
+    if (currentKategori && yazi.data.kategori) {
+      return yazi.data.kategori === currentKategori;
+    }
+    return true;
+  })
+  .sort((a, b) => new Date(b.data.tarih).getTime() - new Date(a.data.tarih).getTime())
+  .slice(0, 3);
+
+// Eğer aynı kategoriden yeterli yazı yoksa, diğer yazılardan tamamla
+if (ilgiliYazilar.length < 3) {
+  const digerYazilar = tumYazilar
+    .filter((yazi) => yazi.slug !== currentSlug)
+    .filter((yazi) => !ilgiliYazilar.some((y) => y.slug === yazi.slug))
+    .sort((a, b) => new Date(b.data.tarih).getTime() - new Date(a.data.tarih).getTime())
+    .slice(0, 3 - ilgiliYazilar.length);
+  
+  ilgiliYazilar = [...ilgiliYazilar, ...digerYazilar];
+}
+---
+
+{ilgiliYazilar.length > 0 && (
+  <section style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #44444E;">
+    <h3 style="font-size: 20px; font-weight: 600; color: #D3DAD9; margin-bottom: 24px;">
+      📚 İlgili Yazılar
+    </h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      {ilgiliYazilar.map((yazi) => (
+        <a 
+          href={`/blog/${yazi.slug}`}
+          style="display: block; background: #44444E; border-radius: 12px; overflow: hidden; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;"
+          class="related-post-card"
+        >
+          {yazi.data.kapakGorseli ? (
+            <img 
+              src={yazi.data.kapakGorseli}
+              alt={yazi.data.baslik}
+              style="width: 100%; height: 140px; object-fit: cover;"
+              loading="lazy"
+            />
+          ) : (
+            <div style="width: 100%; height: 140px; background: linear-gradient(135deg, #57564F 0%, #37353E 100%); display: flex; align-items: center; justify-content: center;">
+              <span style="color: #D3DAD9; opacity: 0.5; font-size: 12px;">Blog Görseli</span>
+            </div>
+          )}
+          <div style="padding: 16px;">
+            <time style="font-size: 12px; color: #57564F; display: block; margin-bottom: 8px;">
+              {new Date(yazi.data.tarih).toLocaleDateString('tr-TR', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+              })}
+            </time>
+            <h4 style="font-size: 16px; font-weight: 600; color: #D3DAD9; margin: 0; line-height: 1.4;">
+              {yazi.data.baslik}
+            </h4>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .related-post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+</style>

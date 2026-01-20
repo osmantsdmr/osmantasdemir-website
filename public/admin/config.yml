@@ -90,6 +90,14 @@ collections:
     create: true
     slug: "{{slug}}"
     extension: md
+    sortable_fields: ['tarih', 'baslik']
+    view_filters:
+      - label: "Öne Çıkan"
+        field: oneCikan
+        pattern: true
+    view_groups:
+      - label: Kategori
+        field: kategori
     fields:
       - label: Başlık
         name: baslik
@@ -97,18 +105,75 @@ collections:
       - label: Slug
         name: slug
         widget: string
-        hint: "URL için kısa isim (örn: cbs-nedir)"
+        hint: "URL için kısa isim (örn: spatial-data-science-2024)"
       - label: Tarih
         name: tarih
         widget: datetime
+        date_format: "DD.MM.YYYY"
+        time_format: "HH:mm"
       - label: Kapak Görseli
         name: kapakGorseli
         widget: image
         required: false
+        hint: "Sosyal medyada paylaşımlarda görünecek (önerilen: 1200x630px)"
       - label: Özet
         name: ozet
         widget: text
-        hint: "Blog listesinde görünecek kısa özet"
+        hint: "Blog listesinde ve sosyal medyada görünecek kısa özet (max 160 karakter)"
+      - label: "⭐ Öne Çıkan"
+        name: oneCikan
+        widget: boolean
+        default: false
+        hint: "İşaretlenirse blog listesinde öne çıkar"
+      - label: Kategori
+        name: kategori
+        widget: select
+        default: "Genel"
+        options:
+          - Genel
+          - CBS
+          - Uzaktan Algılama
+          - Otomasyon
+          - Web Geliştirme
+          - Teknoloji
+          - Kişisel
+      - label: Etiketler
+        name: etiketler
+        widget: list
+        required: false
+        hint: "Her etiket için + butonuna tıklayın (örn: python, spatial-data, carto)"
+        field:
+          label: Etiket
+          name: etiket
+          widget: string
+      - label: Yazar
+        name: yazar
+        widget: string
+        default: "Osman Taşdemir"
+        required: false
+      - label: "🔍 SEO - Meta Açıklama"
+        name: metaDescription
+        widget: text
+        required: false
+        hint: "Google'da görünecek açıklama (boş bırakılırsa özet kullanılır, max 160 karakter)"
       - label: İçerik
         name: body
         widget: markdown
+        buttons:
+          - bold
+          - italic
+          - code
+          - link
+          - heading-two
+          - heading-three
+          - heading-four
+          - quote
+          - bulleted-list
+          - numbered-list
+        editor_components:
+          - image
+          - code-block
+        modes:
+          - raw
+          - rich_text
+        hint: "Tablolar için raw modu kullanın: | Başlık 1 | Başlık 2 |"

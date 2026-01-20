@@ -1,0 +1,106 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  mobile?: boolean;
+}
+
+const { headings, mobile = false } = Astro.props;
+
+// Sadece h2 ve h3'leri filtrele
+const filteredHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+
+{filteredHeadings.length > 0 && (
+  <nav class={mobile ? 'toc-mobile' : 'toc-desktop'}>
+    {!mobile && (
+      <h4 style="font-size: 14px; font-weight: 600; color: #57564F; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
+        İçindekiler
+      </h4>
+    )}
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      {filteredHeadings.map((heading) => (
+        <li 
+          style={`
+            margin-bottom: 8px;
+            padding-left: ${heading.depth === 3 ? '16px' : '0'};
+          `}
+        >
+          <a 
+            href={`#${heading.slug}`}
+            style={`
+              color: ${heading.depth === 2 ? '#D3DAD9' : '#8a8a8a'};
+              text-decoration: none;
+              font-size: ${heading.depth === 2 ? '14px' : '13px'};
+              line-height: 1.5;
+              display: block;
+              padding: 4px 0;
+              transition: color 0.2s;
+              border-left: 2px solid transparent;
+              padding-left: 12px;
+              margin-left: -12px;
+            `}
+            class="toc-link"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .toc-desktop {
+    padding: 20px;
+    background: #44444E;
+    border-radius: 8px;
+  }
+  
+  .toc-mobile {
+    margin-top: 12px;
+  }
+  
+  .toc-link:hover {
+    color: #fff !important;
+    border-left-color: #57564F !important;
+  }
+  
+  .toc-link.active {
+    color: #fff !important;
+    border-left-color: #57564F !important;
+    font-weight: 500;
+  }
+</style>
+
+<script is:inline>
+  // Aktif başlığı takip et
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const headings = document.querySelectorAll('h2[id], h3[id]');
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            tocLinks.forEach((link) => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      },
+      { rootMargin: '-100px 0px -66%' }
+    );
+    
+    headings.forEach((heading) => observer.observe(heading));
+  });
+</script>

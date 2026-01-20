@@ -1,0 +1,64 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+// Schema.org BreadcrumbList için yapılandırılmış veri
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.label,
+    ...(item.href && { "item": item.href })
+  }))
+};
+---
+
+<nav aria-label="Breadcrumb" style="margin-bottom: 24px;">
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+  
+  <ol style="display: flex; align-items: center; gap: 8px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap;">
+    {items.map((item, index) => (
+      <li style="display: flex; align-items: center; gap: 8px;">
+        {index > 0 && (
+          <span style="color: #57564F;" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        )}
+        {item.href ? (
+          <a 
+            href={item.href}
+            style="color: #57564F; text-decoration: none; font-size: 14px; transition: color 0.2s;"
+            class="breadcrumb-link"
+          >
+            {item.label}
+          </a>
+        ) : (
+          <span 
+            style="color: #D3DAD9; font-size: 14px; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"
+            title={item.label}
+          >
+            {item.label}
+          </span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb-link:hover {
+    color: #D3DAD9 !important;
+  }
+</style>
