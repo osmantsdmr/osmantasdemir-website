@@ -11,43 +11,25 @@ interface Props {
 }
 
 const { headings, mobile = false } = Astro.props;
-
-// Sadece h2 ve h3'leri filtrele
 const filteredHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 ---
 
 {filteredHeadings.length > 0 && (
-  <nav class={mobile ? 'toc-mobile' : 'toc-desktop'}>
+  <nav class:list={['toc', { 'toc-mobile': mobile }]}>
     {!mobile && (
-      <h4 style="font-size: 14px; font-weight: 600; color: #57564F; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
-        İçindekiler
-      </h4>
+      <div class="toc-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+        <span>İçindekiler</span>
+      </div>
     )}
-    <ul style="list-style: none; padding: 0; margin: 0;">
-      {filteredHeadings.map((heading) => (
-        <li 
-          style={`
-            margin-bottom: 8px;
-            padding-left: ${heading.depth === 3 ? '16px' : '0'};
-          `}
-        >
-          <a 
-            href={`#${heading.slug}`}
-            style={`
-              color: ${heading.depth === 2 ? '#D3DAD9' : '#8a8a8a'};
-              text-decoration: none;
-              font-size: ${heading.depth === 2 ? '14px' : '13px'};
-              line-height: 1.5;
-              display: block;
-              padding: 4px 0;
-              transition: color 0.2s;
-              border-left: 2px solid transparent;
-              padding-left: 12px;
-              margin-left: -12px;
-            `}
-            class="toc-link"
-          >
-            {heading.text}
+    <ul class="toc-list">
+      {filteredHeadings.map((heading, index) => (
+        <li class:list={['toc-item', { 'toc-item-sub': heading.depth === 3 }]}>
+          <a href={`#${heading.slug}`} class="toc-link" data-index={index}>
+            <span class="toc-indicator"></span>
+            <span class="toc-text">{heading.text}</span>
           </a>
         </li>
       ))}
@@ -56,41 +38,119 @@ const filteredHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 )}
 
 <style>
-  .toc-desktop {
+  .toc {
+    background: linear-gradient(135deg, #3a3a42 0%, #2d2d35 100%);
+    border-radius: 12px;
     padding: 20px;
-    background: #44444E;
-    border-radius: 8px;
+    border: 1px solid rgba(87, 86, 79, 0.3);
   }
   
   .toc-mobile {
-    margin-top: 12px;
+    background: transparent;
+    padding: 12px 0 0 0;
+    border: none;
+  }
+  
+  .toc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8a8a8a;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(87, 86, 79, 0.3);
+  }
+  
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .toc-item-sub {
+    margin-left: 16px;
+  }
+  
+  .toc-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    color: #9a9a9a;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .toc-item-sub .toc-link {
+    font-size: 13px;
+    color: #7a7a7a;
   }
   
   .toc-link:hover {
-    color: #fff !important;
-    border-left-color: #57564F !important;
+    background: rgba(87, 86, 79, 0.2);
+    color: #D3DAD9;
+  }
+  
+  .toc-indicator {
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    border-radius: 50%;
+    background: #4a4a4a;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+  }
+  
+  .toc-item-sub .toc-indicator {
+    width: 4px;
+    height: 4px;
+    min-width: 4px;
+    margin-top: 7px;
+  }
+  
+  .toc-link:hover .toc-indicator {
+    background: #57564F;
+    transform: scale(1.2);
   }
   
   .toc-link.active {
-    color: #fff !important;
-    border-left-color: #57564F !important;
-    font-weight: 500;
+    background: rgba(87, 86, 79, 0.3);
+    color: #fff;
+  }
+  
+  .toc-link.active .toc-indicator {
+    background: #7c9a5e;
+    box-shadow: 0 0 8px rgba(124, 154, 94, 0.5);
+    transform: scale(1.3);
   }
 </style>
 
 <script is:inline>
-  // Aktif başlığı takip et
   document.addEventListener('DOMContentLoaded', () => {
     const tocLinks = document.querySelectorAll('.toc-link');
     const headings = document.querySelectorAll('h2[id], h3[id]');
+    
+    if (tocLinks.length === 0 || headings.length === 0) return;
+    
+    tocLinks[0]?.classList.add('active');
     
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const id = entry.target.getAttribute('id');
+            tocLinks.forEach((link) => link.classList.remove('active'));
             tocLinks.forEach((link) => {
-              link.classList.remove('active');
               if (link.getAttribute('href') === `#${id}`) {
                 link.classList.add('active');
               }
@@ -98,7 +158,7 @@ const filteredHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
           }
         });
       },
-      { rootMargin: '-100px 0px -66%' }
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
     );
     
     headings.forEach((heading) => observer.observe(heading));

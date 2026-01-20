@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import Navbar from '../components/Navbar.astro'
 
 interface Props {
   title: string;
@@ -67,7 +68,8 @@ const imageURL = new URL(image, Astro.site || 'https://osmantsdmr.com');
     <title>{title}</title>
   </head>
   <body class="bg-[#1a1a1a] text-[#D3DAD9]">
-    <slot />
+  <Navbar />
+  <slot />
     
     <!-- Başa dön butonu -->
     <button 
