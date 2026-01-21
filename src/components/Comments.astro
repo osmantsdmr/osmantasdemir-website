@@ -5,64 +5,116 @@ interface Props {
 }
 
 const { pageId, pageTitle } = Astro.props;
-
-// Cusdis App ID - osmantsdmr.com
-const CUSDIS_APP_ID = "ab1b00e7-ff01-4287-ac2e-4b8d67c00818"; 
+const CUSDIS_APP_ID = "ab1b00e7-ff01-4287-ac2e-4b8d67c00818";
 ---
 
-<section style="margin-top: 48px; padding-top: 32px; border-top: 1px solid #44444E;">
-  <h3 style="font-size: 20px; font-weight: 600; color: #D3DAD9; margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
-  <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #3a3a42 0%, #2d2d35 100%); border-radius: 10px; border: 1px solid rgba(87, 86, 79, 0.3);">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-    </svg>
-  </span>
-  Yorumlar
-</h3>
-  
-  <div 
-    id="cusdis_thread"
-    data-host="https://cusdis.com"
-    data-app-id={CUSDIS_APP_ID}
-    data-page-id={pageId}
-    data-page-url={Astro.url.href}
-    data-page-title={pageTitle}
-    data-theme="dark"
-  >
+<section class="comments-section">
+  <div class="comments-header">
+    <div class="comments-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    </div>
+    <div class="comments-title">
+      <h3>Yorumlar</h3>
+      <p>Düşüncelerinizi paylaşın</p>
+    </div>
   </div>
   
-  <!-- Cusdis yüklenmeden önce gösterilecek placeholder -->
+  <div class="comments-container">
+    <div 
+      id="cusdis_thread"
+      data-host="https://cusdis.com"
+      data-app-id={CUSDIS_APP_ID}
+      data-page-id={pageId}
+      data-page-url={Astro.url.href}
+      data-page-title={pageTitle}
+      data-theme="dark"
+    >
+    </div>
+  </div>
+  
   <noscript>
-    <p style="color: #57564F; font-style: italic;">Yorumları görmek için JavaScript'i etkinleştirin.</p>
+    <p class="noscript-msg">Yorumları görmek için JavaScript'i etkinleştirin.</p>
   </noscript>
 </section>
 
+<style>
+  .comments-section {
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(87, 86, 79, 0.3);
+  }
+  
+  .comments-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  
+  .comments-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #7c9a5e 0%, #6a8a4e 100%);
+    border-radius: 12px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  
+  .comments-title h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 4px 0;
+  }
+  
+  .comments-title p {
+    font-size: 14px;
+    color: #7a7a7a;
+    margin: 0;
+  }
+  
+  .comments-container {
+    background: linear-gradient(135deg, #2d2d35 0%, #252529 100%);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(87, 86, 79, 0.3);
+  }
+  
+  .noscript-msg {
+    color: #57564F;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+  }
+</style>
+
 <style is:global>
-  /* Cusdis container */
-  #cusdis_thread {
-    margin-top: 24px;
-  }
-  
+  /* Cusdis iframe düzeltmesi - scrollbar kaldır */
   #cusdis_thread iframe {
-    border-radius: 12px !important;
-    background: #2d2d35 !important;
-  }
-  
-  /* Form container */
-  #cusdis_thread [data-cusdis-host] {
+    width: 100% !important;
+    min-height: 350px !important;
+    height: auto !important;
+    border: none !important;
     background: transparent !important;
   }
   
-  /* Input ve textarea stilleri */
+  /* Input stilleri */
   #cusdis_thread input,
   #cusdis_thread textarea {
     background: #3a3a42 !important;
-    border: 1px solid rgba(87, 86, 79, 0.4) !important;
+    border: 2px solid rgba(87, 86, 79, 0.4) !important;
     color: #D3DAD9 !important;
-    border-radius: 10px !important;
-    padding: 14px 16px !important;
+    border-radius: 12px !important;
+    padding: 16px 18px !important;
     font-size: 15px !important;
     transition: all 0.2s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   #cusdis_thread input::placeholder,
@@ -74,60 +126,74 @@ const CUSDIS_APP_ID = "ab1b00e7-ff01-4287-ac2e-4b8d67c00818";
   #cusdis_thread textarea:focus {
     outline: none !important;
     border-color: #7c9a5e !important;
-    box-shadow: 0 0 0 3px rgba(124, 154, 94, 0.15) !important;
+    box-shadow: 0 0 0 4px rgba(124, 154, 94, 0.15) !important;
   }
   
   #cusdis_thread textarea {
-    min-height: 120px !important;
+    min-height: 140px !important;
     resize: vertical !important;
   }
   
-  /* Buton stilleri */
+  /* Buton */
   #cusdis_thread button {
     background: linear-gradient(135deg, #7c9a5e 0%, #6a8a4e 100%) !important;
     color: #fff !important;
     border: none !important;
-    border-radius: 10px !important;
-    padding: 12px 28px !important;
+    border-radius: 12px !important;
+    padding: 14px 32px !important;
     font-size: 15px !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
+    margin-top: 8px !important;
   }
   
   #cusdis_thread button:hover {
     background: linear-gradient(135deg, #8baa6e 0%, #7c9a5e 100%) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 12px rgba(124, 154, 94, 0.3) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(124, 154, 94, 0.35) !important;
   }
   
-  /* Label stilleri */
+  /* Label */
   #cusdis_thread label {
     color: #9a9a9a !important;
     font-size: 13px !important;
-    font-weight: 500 !important;
-    margin-bottom: 8px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 10px !important;
     display: block !important;
   }
   
-  /* Yorum kartları */
-  #cusdis_thread .cusdis-comment {
-    background: #3a3a42 !important;
-    border-radius: 12px !important;
-    padding: 20px !important;
-    margin-bottom: 16px !important;
-    border: 1px solid rgba(87, 86, 79, 0.3) !important;
+  /* Form layout düzeltmesi */
+  #cusdis_thread form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  #cusdis_thread form > div {
+    margin: 0 !important;
   }
 </style>
 
 <script is:inline>
-  // Cusdis'i sayfa yüklendiğinde başlat
+  // Cusdis'i başlat ve iframe yüksekliğini otomatik ayarla
   window.addEventListener('load', function() {
     if (window.CUSDIS) {
       window.CUSDIS.initial();
     }
+    
+    // iframe yüksekliğini içeriğe göre ayarla
+    const checkIframe = setInterval(() => {
+      const iframe = document.querySelector('#cusdis_thread iframe');
+      if (iframe) {
+        iframe.style.height = 'auto';
+        iframe.style.minHeight = '400px';
+        clearInterval(checkIframe);
+      }
+    }, 100);
   });
 </script>
 
-<!-- Cusdis SDK -->
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
