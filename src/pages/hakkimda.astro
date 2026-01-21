@@ -8,230 +8,793 @@ import Navbar from '../components/Navbar.astro';
   
   <main>
     <!-- Hero Section -->
-    <section style="padding: 140px 20px 60px; background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%);">
-      <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
+    <section class="hero-section">
+      <div class="hero-container">
         
         <!-- Profil Fotoğrafı -->
-        <div style="flex: 0 0 280px;">
-          <div style="width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 4px solid #57564F;">
+        <div class="profile-photo-wrapper">
+          <div class="profile-photo">
             <img 
               src="/images/profil.jpg" 
               alt="Osman Taşdemir"
-              style="width: 100%; height: 100%; object-fit: cover;"
-              onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:linear-gradient(135deg, #57564F 0%, #37353E 100%);display:flex;align-items:center;justify-content:center;color:#D3DAD9;font-size:64px;font-weight:bold;\'>OT</div>'"
+              onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'initials\'>OT</div>'"
             />
           </div>
         </div>
 
         <!-- Bio -->
-        <div style="flex: 1; min-width: 300px;">
-          <h1 style="font-size: 42px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">
-            Osman Taşdemir
-          </h1>
-          <p style="font-size: 20px; color: #57564F; margin-bottom: 24px;">
-            CBS Uzmanı & Otomasyon Geliştiricisi
-          </p>
-          <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8; margin-bottom: 24px;">
+        <div class="bio-content">
+          <h1>Osman Taşdemir</h1>
+          <p class="title">CBS Uzmanı & Otomasyon Geliştiricisi</p>
+          <p class="description">
             Coğrafi Bilgi Sistemleri ve otomasyon alanlarında çözümler geliştiren bir CBS uzmanıyım. 
-            İzmir Bakırçay Üniversitesi Coğrafya bölümü son sınıf öğrencisi olarak ArcGIS Pro, QGIS 
-            ve ArcGIS Online başta olmak üzere masaüstü ve web tabanlı CBS yazılımlarında mekansal 
-            analizler, uygunluk analizleri, yoğunluk haritaları ve risk bölgesi belirlemeleri gerçekleştiriyorum.
+            İzmir Bakırçay Üniversitesi Coğrafya bölümü son sınıf öğrencisi olarak mekansal analizler, 
+            uzaktan algılama projeleri ve iş süreçleri otomasyonu üzerine çalışıyorum.
           </p>
-          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-            <a href="/projeler" style="display: inline-block; background: #57564F; color: #D3DAD9; padding: 12px 24px; border-radius: 8px; text-decoration: none; transition: background 0.3s;">
-              Projelerimi Gör
-            </a>
-            <a href="/iletisim" style="display: inline-block; background: transparent; color: #D3DAD9; padding: 12px 24px; border-radius: 8px; text-decoration: none; border: 2px solid #57564F; transition: background 0.3s;">
-              İletişime Geç
-            </a>
+          <div class="hero-buttons">
+            <a href="/projeler" class="btn-primary">Projelerimi Gör</a>
+            <a href="/iletisim" class="btn-secondary">İletişime Geç</a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Detaylı Hakkımda -->
-    <section style="padding: 80px 20px; background-color: #44444E;">
-      <div style="max-width: 900px; margin: 0 auto;">
-        <h2 style="font-size: 32px; font-weight: bold; color: #D3DAD9; margin-bottom: 40px; text-align: center;">
-          Ne Yapıyorum?
-        </h2>
+    <!-- Hikayem / Motivasyon -->
+    <section class="story-section">
+      <div class="container">
+        <h2 class="section-title">Hikayem</h2>
         
-        <div style="background: #37353E; border-radius: 12px; padding: 32px; margin-bottom: 24px;">
-          <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 24px;">🛰️</span>
-            Uzaktan Algılama
-          </h3>
-          <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8;">
+        <div class="story-grid">
+          <div class="story-card">
+            <div class="story-icon">🎯</div>
+            <h3>CBS'e Nasıl Başladım?</h3>
+            <p>
+              Coğrafi Bilgi Sistemleri'ne olan ilgim lisans eğitimimle başladı. Mekansal verilerin 
+              analizi ve görselleştirilmesinin farklı sektörlerde nasıl kritik kararlar alınmasına 
+              yardımcı olduğunu gördükçe bu alana olan tutkum derinleşti.
+            </p>
+          </div>
+
+          <div class="story-card">
+            <div class="story-icon">⚡</div>
+            <h3>Neden Otomasyon?</h3>
+            <p>
+              Günümüzde en basit sektörden ileri seviye sektörlere kadar otomasyonun ortak nokta 
+              olduğunu fark ettim. Bu dönüşüme dahil olmak ve kendimi güncel tutmak için küçük 
+              projelerle başlayıp, piyasaya ürünler çıkararak bu becerimi pekiştirdim.
+            </p>
+          </div>
+
+          <div class="story-card">
+            <div class="story-icon">🚀</div>
+            <h3>Gelecek Hedeflerim</h3>
+            <p>
+              CBS'in yakın gelecekte farklı sektörlerle daha fazla entegre olacağı bir gerçek. 
+              Bu süreçte yapay zeka entegreli projeler ortaya koyarak geçmiş, günümüz ve gelecek 
+              hakkında daha doğru kararlar alınmasına katkı sağlamak istiyorum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beceri Seviyeleri -->
+    <section class="skills-section">
+      <div class="container">
+        <h2 class="section-title">Beceri Seviyeleri</h2>
+        
+        <div class="skills-grid">
+          
+          <!-- CBS Yazılımları -->
+          <div class="skill-category">
+            <h3><span class="category-icon">🗺️</span> CBS Yazılımları</h3>
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">ArcGIS Pro</span>
+                <span class="skill-level">İleri</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">QGIS</span>
+                <span class="skill-level">İleri</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">ArcGIS Online</span>
+                <span class="skill-level">Orta-İleri</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">CityEngine</span>
+                <span class="skill-level">Temel</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 40%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Programlama -->
+          <div class="skill-category">
+            <h3><span class="category-icon">💻</span> Programlama</h3>
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Python</span>
+                <span class="skill-level">Orta</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+              </div>
+              <p class="skill-note">AI destekli geliştirme, iskelet yapısına hakim</p>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-level">Orta</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 55%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">HTML / CSS</span>
+                <span class="skill-level">Orta</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">SQL</span>
+                <span class="skill-level">Orta</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 55%;"></div>
+              </div>
+              <p class="skill-note">SQL Server Management Studio</p>
+            </div>
+          </div>
+
+          <!-- Otomasyon & Araçlar -->
+          <div class="skill-category">
+            <h3><span class="category-icon">⚡</span> Otomasyon & Araçlar</h3>
+            
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">n8n & Workflow Araçları</span>
+                <span class="skill-level">Orta</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Google Earth Engine</span>
+                <span class="skill-level">Orta</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 55%;"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">API Entegrasyonları</span>
+                <span class="skill-level">Orta</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+              </div>
+              <p class="skill-note">WhatsApp API, ChatGPT API, Google Sheets</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Kullandığım Kütüphaneler -->
+        <div class="libraries-section">
+          <h3>Python Kütüphaneleri</h3>
+          <div class="library-tags">
+            <span class="library-tag">arcpy</span>
+            <span class="library-tag">geopandas</span>
+            <span class="library-tag">pandas</span>
+            <span class="library-tag">numpy</span>
+            <span class="library-tag">rasterio</span>
+            <span class="library-tag">earthengine-api</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Ne Yapıyorum? -->
+    <section class="what-i-do-section">
+      <div class="container">
+        <h2 class="section-title">Ne Yapıyorum?</h2>
+        
+        <div class="service-card">
+          <h3><span>🛰️</span> Uzaktan Algılama</h3>
+          <p>
             Landsat uydu görüntüleriyle NDVI analizleri ve zamansal değişim tespitleri yapıyorum. 
             Google Earth Engine platformunda yapay zeka destekli kod geliştirme yöntemiyle 
             özelleştirilmiş harita ve veri çıktıları üretiyorum.
           </p>
         </div>
 
-        <div style="background: #37353E; border-radius: 12px; padding: 32px; margin-bottom: 24px;">
-          <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 24px;">⚡</span>
-            Otomasyon & Bot Geliştirme
-          </h3>
-          <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8;">
+        <div class="service-card">
+          <h3><span>⚡</span> Otomasyon & Bot Geliştirme</h3>
+          <p>
             CBS'in yanı sıra n8n ile iş süreçleri otomasyonu geliştiriyorum. WhatsApp Business API, 
             Google Sheets ve ChatGPT API entegrasyonlarıyla müşteri iletişimi, sipariş takibi ve 
             veri yönetimi süreçlerini otomatikleştiren sistemler kuruyorum.
           </p>
         </div>
 
-        <div style="background: #37353E; border-radius: 12px; padding: 32px;">
-          <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 24px;">🎯</span>
-            Projeler
-          </h3>
-          <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8;">
-            Tamamladığım projeler arasında Konya ili için Analitik Hiyerarşi Prosesi (AHP) yöntemiyle 
-            güneş paneli yer seçimi analizi, Bolu Seben Gölü'nün uzaktan algılama ile zamansal değişim 
-            analizi ve işletmeler için WhatsApp tabanlı sipariş yönetim botu bulunuyor. Şu an bir mobil 
-            uygulama geliştirme projesi üzerinde çalışıyorum.
+        <div class="service-card">
+          <h3><span>🎯</span> Projeler</h3>
+          <p>
+            Tamamladığım projeler arasında Konya ili için AHP yöntemiyle güneş paneli yer seçimi 
+            analizi, Bolu Seben Gölü'nün uzaktan algılama ile zamansal değişim analizi ve 
+            işletmeler için WhatsApp tabanlı sipariş yönetim botu bulunuyor.
           </p>
         </div>
       </div>
     </section>
 
     <!-- Eğitim -->
-    <section style="padding: 80px 20px; background-color: #37353E;">
-      <div style="max-width: 1000px; margin: 0 auto;">
-        <h2 style="font-size: 32px; font-weight: bold; color: #D3DAD9; margin-bottom: 40px; text-align: center;">
-          Eğitim
-        </h2>
+    <section class="education-section">
+      <div class="container">
+        <h2 class="section-title">Eğitim</h2>
         
-        <div style="background: #44444E; border-radius: 12px; padding: 32px; margin-bottom: 24px;">
-          <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 16px;">
+        <div class="education-card">
+          <div class="education-content">
             <div>
-              <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 8px;">
-                İzmir Bakırçay Üniversitesi
-              </h3>
-              <p style="font-size: 16px; color: #57564F; margin-bottom: 8px;">
-                Coğrafya Bölümü (Lisans)
-              </p>
-              <p style="font-size: 14px; color: #D3DAD9; opacity: 0.7;">
-                CBS, Uzaktan Algılama, Mekansal Analiz, Kartografya
-              </p>
+              <h3>İzmir Bakırçay Üniversitesi</h3>
+              <p class="degree">Coğrafya Bölümü (Lisans)</p>
+              <p class="topics">CBS, Uzaktan Algılama, Mekansal Analiz, Kartografya</p>
             </div>
-            <span style="background: #57564F; color: #D3DAD9; padding: 6px 16px; border-radius: 20px; font-size: 14px;">
-              2022 - 2026
-            </span>
+            <span class="year-badge">2022 - 2026</span>
           </div>
         </div>
 
-        <div style="background: #44444E; border-radius: 12px; padding: 32px;">
-          <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 16px;">
+        <div class="education-card">
+          <div class="education-content">
             <div>
-              <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 8px;">
-                Anadolu Üniversitesi
-              </h3>
-              <p style="font-size: 16px; color: #57564F; margin-bottom: 8px;">
-                Yönetim Bilişim Sistemleri (Lisans)
-              </p>
-              <p style="font-size: 14px; color: #D3DAD9; opacity: 0.7;">
-                Python, SQL, HTML, CSS, Veri Yönetimi
-              </p>
+              <h3>Anadolu Üniversitesi</h3>
+              <p class="degree">Yönetim Bilişim Sistemleri (Lisans)</p>
+              <p class="topics">Python, SQL, HTML, CSS, Veri Yönetimi</p>
             </div>
-            <span style="background: #57564F; color: #D3DAD9; padding: 6px 16px; border-radius: 20px; font-size: 14px;">
-              Devam Ediyor
-            </span>
+            <span class="year-badge">Devam Ediyor</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- Yetenekler -->
-    <section style="padding: 80px 20px; background-color: #44444E;">
-      <div style="max-width: 1000px; margin: 0 auto;">
-        <h2 style="font-size: 32px; font-weight: bold; color: #D3DAD9; margin-bottom: 40px; text-align: center;">
-          Yetenekler
-        </h2>
+    <!-- Hobiler & Kişisel -->
+    <section class="hobbies-section">
+      <div class="container">
+        <h2 class="section-title">İş Dışında</h2>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px;">
-          
-          <!-- CBS Yetenekleri -->
-          <div style="background: #37353E; border-radius: 12px; padding: 28px;">
-            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 24px;">🗺️</span>
-              Coğrafi Bilgi Sistemleri
-            </h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">ArcGIS Pro</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">QGIS</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">ArcGIS Online</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Mekansal Analiz</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Kartografya</span>
-            </div>
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon">🎾</div>
+            <h3>Kort Tenisi</h3>
+            <p>Boş zamanlarımda kort tenisi oynuyorum.</p>
           </div>
 
-          <!-- Uzaktan Algılama -->
-          <div style="background: #37353E; border-radius: 12px; padding: 28px;">
-            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 24px;">🛰️</span>
-              Uzaktan Algılama
-            </h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Google Earth Engine</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Landsat</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">NDVI Analizi</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Değişim Tespiti</span>
-            </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">💪</div>
+            <h3>Fitness</h3>
+            <p>Düzenli spor yaparak formumu koruyorum.</p>
           </div>
 
-          <!-- Otomasyon -->
-          <div style="background: #37353E; border-radius: 12px; padding: 28px;">
-            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 24px;">⚡</span>
-              Otomasyon & Geliştirme
-            </h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">n8n</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">WhatsApp API</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">ChatGPT API</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Workflow</span>
-            </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">👥</div>
+            <h3>Sosyal Hayat</h3>
+            <p>Arkadaşlarımla vakit geçirmeyi seviyorum.</p>
           </div>
-
-          <!-- Programlama -->
-          <div style="background: #37353E; border-radius: 12px; padding: 28px;">
-            <h3 style="font-size: 18px; font-weight: bold; color: #D3DAD9; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
-              <span style="font-size: 24px;">💻</span>
-              Programlama
-            </h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Python</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">SQL</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">HTML/CSS</span>
-              <span style="background: #44444E; color: #D3DAD9; padding: 8px 14px; border-radius: 6px; font-size: 14px;">Git & GitHub</span>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section style="padding: 80px 20px; background: linear-gradient(135deg, #57564F 0%, #37353E 100%); text-align: center;">
-      <h2 style="font-size: 32px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">
-        Birlikte Çalışalım
-      </h2>
-      <p style="font-size: 18px; color: #D3DAD9; opacity: 0.8; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
-        Projeniz için CBS analizi, otomasyon veya danışmanlık hizmeti almak ister misiniz?
-      </p>
-      <a href="/iletisim" style="display: inline-block; background: #D3DAD9; color: #37353E; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: transform 0.3s;">
-        İletişime Geç
-      </a>
+    <section class="cta-section">
+      <h2>Birlikte Çalışalım</h2>
+      <p>Projeniz için CBS analizi, otomasyon veya danışmanlık hizmeti almak ister misiniz?</p>
+      <a href="/iletisim" class="cta-button">İletişime Geç</a>
     </section>
 
   </main>
 </Layout>
 
 <style>
-  a:hover {
+  /* Hero Section */
+  .hero-section {
+    padding: 140px 20px 60px;
+    background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%);
+  }
+
+  .hero-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .profile-photo-wrapper {
+    flex: 0 0 280px;
+  }
+
+  .profile-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #57564F;
+  }
+
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-photo .initials {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #57564F 0%, #37353E 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D3DAD9;
+    font-size: 64px;
+    font-weight: bold;
+  }
+
+  .bio-content {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .bio-content h1 {
+    font-size: 42px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 16px;
+  }
+
+  .bio-content .title {
+    font-size: 20px;
+    color: #57564F;
+    margin-bottom: 24px;
+  }
+
+  .bio-content .description {
+    font-size: 16px;
+    color: #D3DAD9;
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: #57564F;
+    color: #D3DAD9;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: #6a695f;
     transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: #D3DAD9;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 2px solid #57564F;
+    transition: all 0.3s;
+  }
+
+  .btn-secondary:hover {
+    background: #57564F;
+    transform: translateY(-2px);
+  }
+
+  /* Container */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  /* Story Section */
+  .story-section {
+    padding: 80px 20px;
+    background-color: #44444E;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .story-card {
+    background: #37353E;
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .story-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+
+  .story-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 16px;
+  }
+
+  .story-card p {
+    font-size: 15px;
+    color: #D3DAD9;
+    opacity: 0.8;
+    line-height: 1.8;
+  }
+
+  /* Skills Section */
+  .skills-section {
+    padding: 80px 20px;
+    background-color: #37353E;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .skill-category {
+    background: #44444E;
+    border-radius: 12px;
+    padding: 28px;
+  }
+
+  .skill-category h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .category-icon {
+    font-size: 24px;
+  }
+
+  .skill-item {
+    margin-bottom: 20px;
+  }
+
+  .skill-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .skill-name {
+    font-size: 14px;
+    color: #D3DAD9;
+  }
+
+  .skill-level {
+    font-size: 12px;
+    color: #57564F;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: #37353E;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #57564F 0%, #7a796f 100%);
+    border-radius: 4px;
+    transition: width 1s ease-out;
+  }
+
+  .skill-note {
+    font-size: 12px;
+    color: #57564F;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Libraries */
+  .libraries-section {
+    background: #44444E;
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+
+  .libraries-section h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 20px;
+  }
+
+  .library-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .library-tag {
+    background: #37353E;
+    color: #D3DAD9;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: monospace;
+  }
+
+  /* What I Do Section */
+  .what-i-do-section {
+    padding: 80px 20px;
+    background-color: #44444E;
+  }
+
+  .service-card {
+    background: #37353E;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .service-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .service-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .service-card h3 span {
+    font-size: 24px;
+  }
+
+  .service-card p {
+    font-size: 16px;
+    color: #D3DAD9;
+    opacity: 0.8;
+    line-height: 1.8;
+  }
+
+  /* Education Section */
+  .education-section {
+    padding: 80px 20px;
+    background-color: #37353E;
+  }
+
+  .education-card {
+    background: #44444E;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .education-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .education-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .education-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 8px;
+  }
+
+  .education-card .degree {
+    font-size: 16px;
+    color: #57564F;
+    margin-bottom: 8px;
+  }
+
+  .education-card .topics {
+    font-size: 14px;
+    color: #D3DAD9;
+    opacity: 0.7;
+  }
+
+  .year-badge {
+    background: #57564F;
+    color: #D3DAD9;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  /* Hobbies Section */
+  .hobbies-section {
+    padding: 80px 20px;
+    background-color: #44444E;
+  }
+
+  .hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .hobby-card {
+    background: #37353E;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .hobby-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .hobby-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 8px;
+  }
+
+  .hobby-card p {
+    font-size: 14px;
+    color: #D3DAD9;
+    opacity: 0.7;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #57564F 0%, #37353E 100%);
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 18px;
+    color: #D3DAD9;
+    opacity: 0.8;
+    margin-bottom: 32px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #D3DAD9;
+    color: #37353E;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .profile-photo-wrapper {
+      flex: none;
+    }
+
+    .hero-buttons {
+      justify-content: center;
+    }
+
+    .bio-content h1 {
+      font-size: 32px;
+    }
+
+    .education-content {
+      flex-direction: column;
+    }
+
+    .year-badge {
+      align-self: flex-start;
+    }
   }
 </style>
