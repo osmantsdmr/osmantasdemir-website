@@ -1,15 +1,15 @@
 ---
 baslik: "Spatial Data Science 2024: Trendler, Zorluklar ve Fırsatlar"
 slug: "spatial-data-science-2024"
-tarih: 2025-01-20T10:00:00.000Z
+tarih: 2025-01-21T10:00:00.000Z
 kapakGorseli: "/images/blog/spatial-data-science-2024.jpg"
-ozet: "CARTO ve Databricks'in 250+ uzmanla gerçekleştirdiği araştırmaya göre Spatial Data Science artık iş stratejilerinin merkezinde."
+ozet: "CARTO ve Databricks'in 250+ uzmanla gerçekleştirdiği araştırmaya göre Spatial Data Science artık iş stratejilerinin merkezinde. Trendler, zorluklar ve fırsatlar."
 kategori: "CBS"
 etiketler:
   - spatial-data
   - carto
   - cloud
-  - ai
+  - yapay-zeka
   - gis
 yazar: "Osman Taşdemir"
 metaDescription: "2024 Spatial Data Science raporu analizi: Cloud geçişi %70'e ulaştı, AI yatırımları %31, yetenek açığı %69. Trendler ve fırsatlar."
@@ -18,13 +18,13 @@ oneCikan: true
 
 Birkaç yıl önce "Spatial Data Science" dediğinizde çoğu kişi boş gözlerle bakardı. Bugün ise durum tamamen farklı — artık şirketlerin **%72.7'si** mekânsal veri bilimini iş stratejilerinin merkezine koyuyor.
 
-CARTO ve Databricks'in 250'den fazla sektör uzmanıyla gerçekleştirdiği **State of Spatial Data Science 2024** araştırması, alanın nereden nereye geldiğini net bir şekilde ortaya koyuyor.
+CARTO ve Databricks'in 250'den fazla sektör uzmanıyla gerçekleştirdiği **State of Spatial Data Science 2024** araştırması, alanın nereden nereye geldiğini net bir şekilde ortaya koyuyor. Bu yazıda raporun öne çıkan bulgularını, kendi CBS deneyimimle harmanlayarak paylaşıyorum.
 
 ## Spatial Data Science Neden Bu Kadar Stratejik Hale Geldi?
 
 Mekânsal veri bilimi artık sadece harita üretmekten ibaret değil. Veriyi konum, zaman ve bağlamla birleştirerek karar vericilere çok daha derin içgörüler sunuyor.
 
-Araştırmaya katılan sektörler arasında **Sağlık (%88)**, **Telekomünikasyon (%87.5)** ve **Doğal Kaynaklar & Çevre (%87.2)** en yüksek stratejik önem oranlarına sahip.
+Araştırmaya katılan sektörler arasında **Sağlık (%88)**, **Telekomünikasyon (%87.5)** ve **Doğal Kaynaklar & Çevre (%87.2)** en yüksek stratejik önem oranlarına sahip. Bu sektörlerde konum verisi olmadan karar almak neredeyse imkânsız hale gelmiş.
 
 ### Öne Çıkan Kullanım Alanları
 
@@ -34,6 +34,9 @@ Araştırmaya katılan sektörler arasında **Sağlık (%88)**, **Telekomünikas
 | Site seçimi ve fizibilite | %35 |
 | Lojistik ve rota optimizasyonu | %28 |
 | Sigorta risk modelleme | %22 |
+| Geomarketing ve veri monetizasyonu | %18 |
+
+Kendi çalışmalarımda da bu trendi net görüyorum. Örneğin yangın sonrası erozyon risk analizi veya güneş paneli uygunluk çalışmaları, artık akademik projeler olmaktan çıkıp gerçek iş kararlarını yönlendiren araçlara dönüşüyor.
 
 ## GIS Siloları Yıkılıyor
 
@@ -47,6 +50,8 @@ Geçmişte mekânsal analiz, GIS uzmanlarının tekelindeydi. 2024'te tablo tama
 | Veri Mühendisleri | %42 |
 
 > Dikkat çekici olan şu: GIS uzmanları artık birinci sırada değil. Bu, mekânsal analizin ana veri ekosistemine entegre olduğunun en net göstergesi.
+
+Araştırmadaki iş unvanları analizi de bunu destekliyor — en sık kullanılan kelimeler "data" (33 kez), "engineer" (19) ve "analyst" (17) olurken, "GIS" sadece 12 kez geçmiş.
 
 ## Cloud Geçişi: Artık Zorunluluk
 
@@ -62,6 +67,33 @@ Mekânsal veriler büyük, karmaşık ve sürekli büyüyor. Geleneksel on-premi
 | Sigorta & Reasürans | %93 |
 | Yazılım & Teknoloji | %81.5 |
 
+Cloud'un sağladığı avantajlar:
+
+- Büyük veri setleriyle hızlı analiz
+- Düşük altyapı ve bakım maliyeti
+- Gerçek zamanlı veri işleme
+- Ekipler arası kolay iş birliği
+
+Özellikle felaket modelleme, risk analizi ve fiyatlama gibi veri yoğun kullanım alanları cloud olmadan sürdürülemez hale gelmiş.
+
+## En Büyük Zorluk: Kaliteli Veriye Erişim
+
+Spatial Data Science büyüdükçe veri zorlukları da artıyor. Araştırma, en zorlu aşamaları şöyle sıralıyor:
+
+1. **Görselleştirme** — %28.3
+2. **ETL (veri hazırlama ve entegrasyon)** — %26.3
+3. **Veri keşfi ve temizleme** — %24.4
+4. **Analiz** — %21
+
+Görselleştirmenin en zor aşama olması şaşırtıcı gelebilir ama mantıklı: büyük ve karmaşık veri setlerini anlamlı görsellere dönüştürmek, teknik becerinin ötesinde yaratıcılık ve iletişim yetkinliği gerektiriyor.
+
+### Veri Kaynaklarındaki Temel Sorunlar
+
+- Yüksek edinim maliyeti ve açık veri eksikliği — %53.7
+- Güncel veriye erişim zorluğu — %46.7
+- Zayıf metadata
+- Birlikte çalışabilirlik (interoperability) sorunları
+
 ## Yapay Zeka: Potansiyel Büyük, Benimseme Yavaş
 
 Herkes AI konuşuyor ama Spatial Data Science'ta gerçek kullanım henüz sınırlı.
@@ -71,45 +103,69 @@ Herkes AI konuşuyor ama Spatial Data Science'ta gerçek kullanım henüz sını
 
 ### AI Konusundaki Çekinceler
 
-1. Veri güvenliği ve gizlilik — %39.8
-2. Kaynak ve bilgi eksikliği — %17.8
-3. Net bir iş senaryosunun olmaması — %15
+| Çekince | Oran |
+|---------|------|
+| Veri güvenliği ve gizlilik | %39.8 |
+| Kaynak ve bilgi eksikliği | %17.8 |
+| Net bir iş senaryosunun olmaması | %15 |
 
-## Yetenek Açığı
+AI kullananlara bakıldığında:
 
-Katılımcıların **%69'u** mekânsal veri yetkinliğine sahip çalışan bulmanın zor olduğunu belirtiyor.
+- %37'si açık kaynak modelleri kendi verileriyle kullanıyor
+- %35'i mevcut modelleri ihtiyaçlarına göre uyarlıyor
+- %25'i sıfırdan model geliştiriyor
 
-En çok aranan beceriler:
+Bu veriler, AI'ın Spatial Data Science'ta hâlâ "keşif aşamasında" olduğunu gösteriyor. Ancak önümüzdeki yıllarda hızlı bir ivme bekliyorum — özellikle doğal dil ile harita etkileşimi (LLM tabanlı) gibi gelişmeler çığır açıcı olabilir.
 
-- **Python** (%66), **R** (%54), **SQL** (%53)
-- Veri görselleştirme ve hikâyeleme
-- AI ve machine learning temelleri
-- İletişim ve problem çözme
+## Yetenek Açığı: Büyümenin Önündeki En Büyük Engel
 
-## Örnek Kod
+Alan genişliyor ama uzman sayısı aynı hızda artmıyor.
 
-Python ile basit bir spatial analiz:
+**Katılımcıların %69'u mekânsal veri yetkinliğine sahip çalışan bulmanın zor olduğunu belirtiyor** — bu oran geçen yıla göre 10 puan artmış.
 
-```python
-import geopandas as gpd
-import pandas as pd
+### En Çok Aranan Beceriler
 
-# Veriyi yükle
-gdf = gpd.read_file("data/districts.geojson")
+- **Programlama:** Python (%66), R (%54), SQL (%53)
+- **Veri görselleştirme ve hikâyeleme**
+- **AI ve machine learning temelleri**
+- **Yumuşak beceriler:** İletişim, liderlik, problem çözme
 
-# Buffer oluştur (500 metre)
-gdf['buffer'] = gdf.geometry.buffer(500)
+İlginç bir bulgu: Katılımcıların %37.4'ü mekânsal veri bilimini üniversitede öğrenmiş — bu oran ilk kez "iş yerinde öğrendim" (%36.6) yanıtını geçti. Alan akademik düzeyde de ciddiye alınmaya başlanmış.
 
-# Alan hesapla
-gdf['area_km2'] = gdf.geometry.area / 1_000_000
+## Türkiye İçin Ne Anlam İfade Ediyor?
 
-print(gdf[['name', 'area_km2']].head())
-```
+Rapor global bir perspektif sunuyor ama Türkiye'deki CBS sektörü için de önemli çıkarımlar var:
+
+- **Akademi-sektör işbirliği** kritik önem taşıyor. Üniversitelerde CBS eğitimi güçlü ama sektörle entegrasyon zayıf kalabiliyor.
+- **Cloud geçişi** Türkiye'de henüz bu kadar yaygın değil. Özellikle kamu ve yerel yönetimlerde veri yönetişimi endişeleri baskın.
+- **İklim ve çevre analizleri** ülkemiz için de en stratejik kullanım alanlarından biri olmalı — yangın risk analizi, sel modelleme, tarımsal izleme gibi konular acil ihtiyaçlar.
 
 ## Sonuç
 
-2024, Spatial Data Science için bir dönüm noktası. Cloud geçişi hızlandı, AI potansiyel vaat ediyor ama temkinli ilerleniyor, ve yetenek açığı büyümenin önündeki en büyük engel olmaya devam ediyor.
+2024, Spatial Data Science için bir dönüm noktası.
+
+**Fırsatlar:**
+- Her zamankinden geniş uygulama alanları
+- Cloud ve AI ile güçlenen analitik kapasiteler
+- Artan kurumsal farkındalık ve bütçeler
+
+**Zorluklar:**
+- Kaliteli ve güncel veriye erişim
+- AI belirsizliği ve güvenlik kaygıları
+- Yetenekli iş gücü açığı
+
+Bu alanda çalışan veya çalışmak isteyen herkes için mesaj net: **Teknik becerilerin yanında veri hikâyeleme, iş birliği ve sürekli öğrenme artık olmazsa olmaz.**
 
 ---
 
-*Kaynak: [State of Spatial Data Science 2024](https://carto.com/blog/state-spatial-data-science-2024) — CARTO & Databricks*
+## Sen Ne Düşünüyorsun?
+
+- Spatial Data Science senin sektöründe nasıl kullanılıyor?
+- AI entegrasyonu sence hızlanacak mı?
+- Türkiye'deki CBS sektörünü global trendlerle kıyasladığında ne görüyorsun?
+
+Yorumlarda fikirlerini paylaş.
+
+---
+
+*Kaynak: [State of Spatial Data Science 2024](https://go.carto.com/state-spatial-data-science-2024) — CARTO & Databricks*
