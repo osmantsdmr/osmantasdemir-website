@@ -31,6 +31,13 @@ import Navbar from '../components/Navbar.astro';
             İzmir Bakırçay Üniversitesi Coğrafya bölümü son sınıf öğrencisi olarak mekansal analizler, 
             uzaktan algılama projeleri ve iş süreçleri otomasyonu üzerine çalışıyorum.
           </p>
+          <p class="description" style="margin-top: 16px;">
+            Lisans eğitimimle başlayan CBS tutkum, zamanla otomasyonun her sektörde vazgeçilmez 
+            olduğunu fark etmemle yeni bir boyut kazandı. Bugün ArcGIS Pro'dan WhatsApp botlarına, 
+            uydu görüntü analizlerinden yapay zeka entegrasyonlarına uzanan bir yelpazede projeler 
+            geliştiriyorum. Peki bu yolculuk nasıl başladı ve nereye gidiyor? 
+            <a href="#hikayem" class="story-link">Hikayemi keşfedin ↓</a>
+          </p>
           <div class="hero-buttons">
             <a href="/projeler" class="btn-primary">Projelerimi Gör</a>
             <a href="/iletisim" class="btn-secondary">İletişime Geç</a>
@@ -41,7 +48,7 @@ import Navbar from '../components/Navbar.astro';
     </section>
 
     <!-- Hikayem / Motivasyon -->
-    <section class="story-section">
+    <section class="story-section" id="hikayem">
       <div class="container">
         <h2 class="section-title">Hikayem</h2>
         
@@ -440,6 +447,17 @@ import Navbar from '../components/Navbar.astro';
   .btn-secondary:hover {
     background: #57564F;
     transform: translateY(-2px);
+  }
+
+  .story-link {
+    color: #7a796f;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .story-link:hover {
+    color: #D3DAD9;
   }
 
   /* Container */
