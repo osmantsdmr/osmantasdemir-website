@@ -1,7 +1,7 @@
 ---
 baslik: "Spatial Data Science 2024: Trendler, Zorluklar ve Fırsatlar"
 slug: spatial-data-science-2024
-tarih: 2025-01-21T10:00:00.000Z
+tarih: 21.01.2026T19:09
 kapakGorseli: /images/chatgpt-image-21-oca-2026-03_19_35.png
 ozet: CARTO ve Databricks'in 250+ uzmanla gerçekleştirdiği araştırmaya göre
   Spatial Data Science artık iş stratejilerinin merkezinde. Trendler, zorluklar
