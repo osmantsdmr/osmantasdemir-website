@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import { getCollection } from 'astro:content';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
   const projeler = await getCollection('projeler');
@@ -12,7 +13,9 @@ export async function getStaticPaths() {
 }
 
 const { proje } = Astro.props;
-const { Content } = await proje.render();
+
+// Markdown'ı HTML'e çevir
+const detayHTML = proje.data.detay ? marked.parse(proje.data.detay) : '';
 ---
 
 <Layout title={`${proje.data.baslik} | Osman Taşdemir`}>
@@ -72,12 +75,10 @@ const { Content } = await proje.render();
         </section>
       )}
 
-      <!-- Description -->
+      <!-- Description with Markdown -->
       <section style="margin-bottom: 40px;">
         <h2 style="font-size: 24px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">Proje Hakkında</h2>
-        <p style="font-size: 16px; color: #D3DAD9; opacity: 0.8; line-height: 1.8; white-space: pre-line;">
-          {proje.data.detay}
-        </p>
+        <div class="prose-content" set:html={detayHTML} />
       </section>
 
       <!-- Technologies -->
@@ -128,6 +129,116 @@ const { Content } = await proje.render();
 </Layout>
 
 <style>
+  /* Prose Content Styles - Markdown İçerik */
+  .prose-content {
+    color: #D3DAD9;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .prose-content :global(h2) {
+    font-size: 22px;
+    font-weight: 700;
+    color: #D3DAD9;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #57564F;
+  }
+
+  .prose-content :global(h3) {
+    font-size: 18px;
+    font-weight: 600;
+    color: #D3DAD9;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
+  .prose-content :global(p) {
+    margin-bottom: 16px;
+    opacity: 0.9;
+  }
+
+  .prose-content :global(strong) {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .prose-content :global(ul) {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .prose-content :global(ul li) {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+  }
+
+  .prose-content :global(ul li)::before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: #57564F;
+    font-weight: bold;
+  }
+
+  .prose-content :global(ol) {
+    padding-left: 24px;
+    margin-bottom: 20px;
+  }
+
+  .prose-content :global(ol li) {
+    margin-bottom: 10px;
+    opacity: 0.9;
+  }
+
+  .prose-content :global(a) {
+    color: #8b9dc3;
+    text-decoration: underline;
+    transition: color 0.3s;
+  }
+
+  .prose-content :global(a:hover) {
+    color: #D3DAD9;
+  }
+
+  .prose-content :global(blockquote) {
+    border-left: 4px solid #57564F;
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    opacity: 0.85;
+    background: rgba(87, 86, 79, 0.1);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .prose-content :global(code) {
+    background: #44444E;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: monospace;
+  }
+
+  .prose-content :global(pre) {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+
+  .prose-content :global(hr) {
+    border: none;
+    border-top: 1px solid #57564F;
+    margin: 32px 0;
+  }
+
+  /* Gallery Hover */
   .gallery-img:hover {
     transform: scale(1.03);
   }
