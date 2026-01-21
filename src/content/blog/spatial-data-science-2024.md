@@ -1,19 +1,22 @@
 ---
 baslik: "Spatial Data Science 2024: Trendler, Zorluklar ve Fırsatlar"
-slug: "spatial-data-science-2024"
+slug: spatial-data-science-2024
 tarih: 2025-01-21T10:00:00.000Z
-kapakGorseli: "/images/blog/spatial-data-science-2024.jpg"
-ozet: "CARTO ve Databricks'in 250+ uzmanla gerçekleştirdiği araştırmaya göre Spatial Data Science artık iş stratejilerinin merkezinde. Trendler, zorluklar ve fırsatlar."
-kategori: "CBS"
+kapakGorseli: /images/chatgpt-image-21-oca-2026-03_19_35.png
+ozet: CARTO ve Databricks'in 250+ uzmanla gerçekleştirdiği araştırmaya göre
+  Spatial Data Science artık iş stratejilerinin merkezinde. Trendler, zorluklar
+  ve fırsatlar.
+oneCikan: true
+kategori: CBS
 etiketler:
   - spatial-data
   - carto
   - cloud
   - yapay-zeka
   - gis
-yazar: "Osman Taşdemir"
-metaDescription: "2024 Spatial Data Science raporu analizi: Cloud geçişi %70'e ulaştı, AI yatırımları %31, yetenek açığı %69. Trendler ve fırsatlar."
-oneCikan: true
+yazar: Osman Taşdemir
+metaDescription: "2024 Spatial Data Science raporu analizi: Cloud geçişi %70'e
+  ulaştı, AI yatırımları %31, yetenek açığı %69. Trendler ve fırsatlar."
 ---
 
 Birkaç yıl önce "Spatial Data Science" dediğinizde çoğu kişi boş gözlerle bakardı. Bugün ise durum tamamen farklı — artık şirketlerin **%72.7'si** mekânsal veri bilimini iş stratejilerinin merkezine koyuyor.
