@@ -7,12 +7,13 @@ const projeler = await getCollection('projeler');
 
 // Önce öne çıkanlar, sonra diğerleri (tarihe göre yeniden eskiye)
 const siraliProjeler = projeler.sort((a, b) => {
-  // Önce öne çıkan durumuna göre sırala
   if (a.data.oneCikan && !b.data.oneCikan) return -1;
   if (!a.data.oneCikan && b.data.oneCikan) return 1;
-  // Aynı öne çıkan durumunda tarihe göre sırala (yeniden eskiye)
   return (b.data.tarih || '').localeCompare(a.data.tarih || '');
 });
+
+// Kategorileri topla (filtreleme için)
+const kategoriler = [...new Set(projeler.map(p => p.data.kategori))];
 ---
 
 <Layout title="Projeler | Osman Taşdemir">
@@ -20,59 +21,125 @@ const siraliProjeler = projeler.sort((a, b) => {
   
   <main>
     <!-- Hero Section -->
-    <section style="padding: 140px 20px 60px; background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%); text-align: center;">
-      <h1 style="font-size: 42px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">Projelerim</h1>
-      <p style="font-size: 18px; color: #D3DAD9; opacity: 0.8; max-width: 600px; margin: 0 auto;">
-        CBS, uzaktan algılama ve otomasyon alanlarında gerçekleştirdiğim projeler.
-      </p>
+    <section class="hero-section">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+      </div>
+      
+      <div class="hero-content animate-fade-in">
+        <span class="hero-badge">Portföy</span>
+        <h1>Projelerim</h1>
+        <p>CBS, uzaktan algılama ve otomasyon alanlarında gerçekleştirdiğim projeler.</p>
+        
+        <!-- Proje İstatistikleri -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-number">{siraliProjeler.length}</span>
+            <span class="stat-label">Proje</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{siraliProjeler.filter(p => p.data.oneCikan).length}</span>
+            <span class="stat-label">Öne Çıkan</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{kategoriler.length}</span>
+            <span class="stat-label">Kategori</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Projects Grid -->
-    <section style="padding: 60px 20px; background-color: #44444E;">
-      <div style="max-width: 1200px; margin: 0 auto;">
+    <!-- Filter & Projects Section -->
+    <section class="projects-section">
+      <div class="section-transition-top"></div>
+      <div class="container">
+        
+        <!-- Kategori Filtreleri -->
+        {kategoriler.length > 1 && (
+          <div class="filter-bar scroll-animate">
+            <button class="filter-btn active" data-filter="all">
+              Tümü
+            </button>
+            {kategoriler.map((kategori) => (
+              <button class="filter-btn" data-filter={kategori}>
+                {kategori}
+              </button>
+            ))}
+          </div>
+        )}
         
         {siraliProjeler.length === 0 ? (
-          <p style="text-align: center; color: #D3DAD9; opacity: 0.7;">Henüz proje eklenmemiş.</p>
+          <div class="empty-state scroll-animate">
+            <span class="empty-icon">📁</span>
+            <p>Henüz proje eklenmemiş.</p>
+          </div>
         ) : (
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px;">
-            {siraliProjeler.map((proje) => (
-              <a href={`/projeler/${proje.slug}`} style="text-decoration: none;">
-                <article style="background: #37353E; border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; position: relative;">
+          <div class="projects-grid">
+            {siraliProjeler.map((proje, index) => (
+              <a 
+                href={`/projeler/${proje.slug}`} 
+                class="project-card scroll-animate"
+                data-category={proje.data.kategori}
+                style={`transition-delay: ${(index % 6) * 100}ms;`}
+              >
+                <article class={proje.data.oneCikan ? 'featured' : ''}>
                   
-                  {/* Öne Çıkan Yıldız */}
+                  {/* Öne Çıkan Badge */}
                   {proje.data.oneCikan && (
-                    <div style="position: absolute; top: 12px; right: 12px; background: #D4AF37; color: #1a1a1a; padding: 6px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; z-index: 10; display: flex; align-items: center; gap: 4px;">
-                      <span>⭐</span> Öne Çıkan
+                    <div class="featured-badge">
+                      <span class="star">⭐</span> Öne Çıkan
                     </div>
                   )}
                   
-                  {proje.data.kapakGorseli ? (
-                    <img 
-                      src={proje.data.kapakGorseli} 
-                      alt={proje.data.baslik}
-                      style="width: 100%; height: 200px; object-fit: cover;"
-                    />
-                  ) : (
-                    <div style="height: 200px; background: linear-gradient(135deg, #57564F 0%, #37353E 100%); display: flex; align-items: center; justify-content: center;">
-                      <span style="color: #D3DAD9; opacity: 0.5; font-size: 14px;">Proje Görseli</span>
-                    </div>
-                  )}
-                  <div style="padding: 24px;">
-                    <span style="display: inline-block; background: #57564F; color: #D3DAD9; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 12px;">
-                      {proje.data.kategori}
-                    </span>
-                    <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-bottom: 8px;">{proje.data.baslik}</h3>
-                    <p style="font-size: 14px; color: #D3DAD9; opacity: 0.7; margin-bottom: 16px; line-height: 1.6;">
-                      {proje.data.aciklama}
-                    </p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                      {proje.data.teknolojiler?.slice(0, 3).map((tech) => (
-                        <span style="background: #44444E; color: #D3DAD9; padding: 4px 10px; border-radius: 6px; font-size: 12px;">
-                          {tech}
-                        </span>
+                  {/* Proje Görseli */}
+                  <div class="project-image">
+                    {proje.data.kapakGorseli ? (
+                      <img 
+                        src={proje.data.kapakGorseli} 
+                        alt={proje.data.baslik}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="image-placeholder">
+                        <span class="placeholder-icon">🗺️</span>
+                        <span class="placeholder-text">Proje Görseli</span>
+                      </div>
+                    )}
+                    <div class="image-overlay"></div>
+                  </div>
+                  
+                  {/* Proje Bilgileri */}
+                  <div class="project-content">
+                    <span class="category-badge">{proje.data.kategori}</span>
+                    <h3>{proje.data.baslik}</h3>
+                    <p>{proje.data.aciklama}</p>
+                    
+                    {/* Teknolojiler */}
+                    <div class="tech-tags">
+                      {proje.data.teknolojiler?.slice(0, 4).map((tech) => (
+                        <span class="tech-tag">{tech}</span>
                       ))}
+                      {proje.data.teknolojiler?.length > 4 && (
+                        <span class="tech-tag more">+{proje.data.teknolojiler.length - 4}</span>
+                      )}
+                    </div>
+                    
+                    {/* Görüntüle Butonu */}
+                    <div class="view-project">
+                      <span>Projeyi İncele</span>
+                      <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
                     </div>
                   </div>
+                  
                 </article>
               </a>
             ))}
@@ -81,12 +148,624 @@ const siraliProjeler = projeler.sort((a, b) => {
         
       </div>
     </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="section-transition-top from-projects"></div>
+      <div class="cta-content scroll-animate">
+        <h2>Birlikte Çalışalım</h2>
+        <p>Sizin için de benzersiz bir proje geliştirmemi ister misiniz?</p>
+        <a href="/iletisim" class="cta-button">İletişime Geç</a>
+      </div>
+    </section>
+
   </main>
 </Layout>
 
 <style>
-  article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  /* Hero Section */
+  .hero-section {
+    padding: 160px 20px 80px;
+    background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-bg-effects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+  }
+
+  .hero-glow-1 {
+    width: 500px;
+    height: 500px;
+    background: #57564F;
+    top: -200px;
+    left: 10%;
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+
+  .hero-glow-2 {
+    width: 400px;
+    height: 400px;
+    background: #44444E;
+    bottom: -150px;
+    right: 5%;
+    animation: pulse-glow 8s ease-in-out 4s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.1); }
+  }
+
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #57564F;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .particle-1 { top: 20%; left: 15%; animation: float 15s ease-in-out infinite; }
+  .particle-2 { top: 60%; right: 20%; animation: float 18s ease-in-out infinite reverse; }
+  .particle-3 { bottom: 30%; left: 40%; animation: float 12s ease-in-out infinite; }
+  .particle-4 { top: 40%; right: 35%; animation: float 20s ease-in-out infinite reverse; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-20px) translateX(10px); }
+    50% { transform: translateY(-10px) translateX(-10px); }
+    75% { transform: translateY(-30px) translateX(5px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(87, 86, 79, 0.5);
+    color: #D3DAD9;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border: 1px solid rgba(211, 218, 217, 0.1);
+  }
+
+  .hero-content h1 {
+    font-size: 52px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 16px;
+  }
+
+  .hero-content > p {
+    font-size: 18px;
+    color: #D3DAD9;
+    opacity: 0.8;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #D3DAD9;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: #D3DAD9;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(211, 218, 217, 0.2);
+  }
+
+  /* Section Transitions */
+  .section-transition-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, #37353E 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .section-transition-top.from-projects {
+    background: linear-gradient(to bottom, #44444E 0%, transparent 100%);
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Projects Section */
+  .projects-section {
+    padding: 80px 0 100px;
+    background-color: #44444E;
+    position: relative;
+  }
+
+  /* Filter Bar */
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: #37353E;
+    color: #D3DAD9;
+    border: 2px solid transparent;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    background: #57564F;
+    transform: translateY(-2px);
+  }
+
+  .filter-btn.active {
+    background: #57564F;
+    border-color: #D3DAD9;
+  }
+
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .empty-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 20px;
+    opacity: 0.5;
+  }
+
+  .empty-state p {
+    color: #D3DAD9;
+    opacity: 0.7;
+    font-size: 18px;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 30px;
+  }
+
+  /* Project Card */
+  .project-card {
+    text-decoration: none;
+    display: block;
+  }
+
+  .project-card article {
+    background: #37353E;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card article:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  }
+
+  .project-card article.featured {
+    border: 2px solid rgba(212, 175, 55, 0.3);
+  }
+
+  .project-card article.featured:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.1);
+  }
+
+  /* Featured Badge */
+  .featured-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, #D4AF37 0%, #F2D06B 100%);
+    color: #1a1a1a;
+    padding: 8px 14px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  }
+
+  .featured-badge .star {
+    font-size: 12px;
+  }
+
+  /* Project Image */
+  .project-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .project-card article:hover .project-image img {
+    transform: scale(1.08);
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(55, 53, 62, 0.8) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .project-card article:hover .image-overlay {
+    opacity: 1;
+  }
+
+  .image-placeholder {
+    height: 100%;
+    background: linear-gradient(135deg, #57564F 0%, #37353E 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .placeholder-icon {
+    font-size: 48px;
+    opacity: 0.4;
+  }
+
+  .placeholder-text {
+    color: #D3DAD9;
+    opacity: 0.4;
+    font-size: 14px;
+  }
+
+  /* Project Content */
+  .project-content {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category-badge {
+    display: inline-block;
+    background: #57564F;
+    color: #D3DAD9;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+  }
+
+  .project-card article:hover .category-badge {
+    background: #6a695f;
+  }
+
+  .project-content h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+
+  .project-card article:hover .project-content h3 {
+    color: #fff;
+  }
+
+  .project-content p {
+    font-size: 14px;
+    color: #D3DAD9;
+    opacity: 0.7;
+    line-height: 1.7;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+
+  /* Tech Tags */
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .tech-tag {
+    background: #44444E;
+    color: #D3DAD9;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .tech-tag:hover {
+    background: #57564F;
+  }
+
+  .tech-tag.more {
+    background: transparent;
+    border: 1px dashed #57564F;
+    opacity: 0.7;
+  }
+
+  /* View Project Button */
+  .view-project {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #D3DAD9;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    margin-top: auto;
+  }
+
+  .project-card article:hover .view-project {
+    opacity: 1;
+    color: #D4AF37;
+  }
+
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card article:hover .arrow-icon {
+    transform: translateX(5px);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%);
+    text-align: center;
+    position: relative;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 15px;
+  }
+
+  .cta-section p {
+    color: #D3DAD9;
+    opacity: 0.7;
+    font-size: 17px;
+    margin-bottom: 35px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #57564F;
+    color: #D3DAD9;
+    padding: 16px 45px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #6a695f;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(87, 86, 79, 0.3);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll Animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Filter Animation */
+  .project-card.hidden {
+    display: none;
+  }
+
+  .project-card.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 36px;
+    }
+
+    .stats-row {
+      gap: 20px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+    }
+
+    .stat-divider {
+      height: 30px;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
   }
 </style>
+
+<script>
+  // Scroll Animation with Intersection Observer
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        // Filter cards
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+            card.classList.remove('fade-out');
+            // Re-trigger animation
+            setTimeout(() => {
+              card.classList.add('visible');
+            }, 50);
+          } else {
+            card.classList.add('fade-out');
+            setTimeout(() => {
+              card.classList.add('hidden');
+            }, 300);
+          }
+        });
+      });
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>

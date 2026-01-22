@@ -8,156 +8,183 @@ import Navbar from '../components/Navbar.astro';
   
   <main>
     <!-- Hero Section -->
-    <section style="padding: 140px 20px 60px; background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%); text-align: center;">
-      <h1 style="font-size: 42px; font-weight: bold; color: #D3DAD9; margin-bottom: 16px;">İletişim</h1>
-      <p style="font-size: 18px; color: #D3DAD9; opacity: 0.8; max-width: 600px; margin: 0 auto;">
-        Proje teklifleri, iş birlikleri veya sorularınız için benimle iletişime geçebilirsiniz.
-      </p>
+    <section class="hero-section">
+      <div class="hero-bg-effects">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+      </div>
+      
+      <div class="hero-content animate-fade-in">
+        <span class="hero-badge">📬 İletişim</span>
+        <h1>Birlikte Çalışalım</h1>
+        <p>Proje teklifleri, iş birlikleri veya sorularınız için benimle iletişime geçebilirsiniz.</p>
+      </div>
     </section>
 
     <!-- İletişim İçerik -->
-    <section style="padding: 80px 20px; background-color: #44444E;">
-      <div style="max-width: 1000px; margin: 0 auto;">
+    <section class="contact-section">
+      <div class="section-transition-top"></div>
+      <div class="container">
         
         <!-- Başarı Mesajı (Gizli) -->
-        <div id="successMessage" style="display: none; background: #4a7c59; color: #D3DAD9; padding: 24px; border-radius: 12px; text-align: center; margin-bottom: 40px;">
-          <span style="font-size: 32px; display: block; margin-bottom: 12px;">✅</span>
-          <strong style="font-size: 20px;">Mesajınız başarıyla gönderildi!</strong>
-          <p style="margin-top: 8px; opacity: 0.9;">En kısa sürede size dönüş yapacağım.</p>
+        <div id="successMessage" class="success-message">
+          <div class="success-icon">✅</div>
+          <h3>Mesajınız başarıyla gönderildi!</h3>
+          <p>En kısa sürede size dönüş yapacağım.</p>
+          <button onclick="location.reload()" class="send-another-btn">Yeni Mesaj Gönder</button>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px;">
+        <div class="contact-grid">
         
           <!-- Sol: İletişim Bilgileri -->
-          <div>
-            <h2 style="font-size: 28px; font-weight: bold; color: #D3DAD9; margin-bottom: 32px;">
-              İletişim Bilgileri
-            </h2>
+          <div class="contact-info scroll-animate">
+            <h2>İletişim Bilgileri</h2>
             
             <!-- E-posta -->
-            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 28px;">
-              <div style="width: 50px; height: 50px; background: #57564F; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 24px;">📧</span>
+            <a href="mailto:osmantsdmr03@gmail.com" class="info-card">
+              <div class="info-icon">
+                <span>📧</span>
               </div>
-              <div>
-                <p style="font-size: 14px; color: #D3DAD9; opacity: 0.6; margin-bottom: 4px;">E-posta</p>
-                <a href="mailto:osmantsdmr03@gmail.com" style="font-size: 16px; color: #D3DAD9; text-decoration: none;">
-                  osmantsdmr03@gmail.com
-                </a>
+              <div class="info-content">
+                <span class="info-label">E-posta</span>
+                <span class="info-value">osmantsdmr03@gmail.com</span>
+              </div>
+              <div class="info-arrow">→</div>
+            </a>
+
+            <!-- Konum -->
+            <div class="info-card static">
+              <div class="info-icon">
+                <span>📍</span>
+              </div>
+              <div class="info-content">
+                <span class="info-label">Konum</span>
+                <span class="info-value">İzmir, Türkiye</span>
               </div>
             </div>
 
-            <!-- Konum -->
-            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 28px;">
-              <div style="width: 50px; height: 50px; background: #57564F; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 24px;">📍</span>
+            <!-- Yanıt Süresi -->
+            <div class="info-card static">
+              <div class="info-icon">
+                <span>⏱️</span>
               </div>
-              <div>
-                <p style="font-size: 14px; color: #D3DAD9; opacity: 0.6; margin-bottom: 4px;">Konum</p>
-                <p style="font-size: 16px; color: #D3DAD9;">İzmir, Türkiye</p>
+              <div class="info-content">
+                <span class="info-label">Yanıt Süresi</span>
+                <span class="info-value">24 saat içinde</span>
               </div>
             </div>
 
             <!-- Sosyal Medya -->
-            <h3 style="font-size: 20px; font-weight: bold; color: #D3DAD9; margin-top: 40px; margin-bottom: 20px;">
-              Sosyal Medya
-            </h3>
+            <h3>Sosyal Medya</h3>
             
-            <div style="display: flex; gap: 16px;">
+            <div class="social-links">
               <!-- GitHub -->
-              <a href="https://github.com/osmantsdmr" target="_blank" style="width: 50px; height: 50px; background: #37353E; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.3s;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#D3DAD9">
+              <a href="https://github.com/osmantsdmr" target="_blank" class="social-link" title="GitHub">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
+                <span>GitHub</span>
               </a>
               
               <!-- LinkedIn -->
-             <a href="https://www.linkedin.com/in/osman-tasdemir-a44221341/" target="_blank" style="width: 50px; height: 50px; background: #37353E; border-radius: 12px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.3s;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#D3DAD9">
+              <a href="https://www.linkedin.com/in/osman-tasdemir-a44221341/" target="_blank" class="social-link" title="LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
+                <span>LinkedIn</span>
               </a>
+            </div>
+
+            <!-- Hızlı İletişim Notu -->
+            <div class="quick-note">
+              <div class="note-icon">💡</div>
+              <p>Acil projeler için e-posta ile doğrudan iletişime geçebilirsiniz.</p>
             </div>
           </div>
 
           <!-- Sağ: İletişim Formu -->
-          <div id="formContainer">
-            <h2 style="font-size: 28px; font-weight: bold; color: #D3DAD9; margin-bottom: 32px;">
-              Mesaj Gönder
-            </h2>
+          <div id="formContainer" class="form-container scroll-animate" style="transition-delay: 150ms;">
+            <h2>Mesaj Gönder</h2>
             
-            <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: flex; flex-direction: column; gap: 20px;">
+            <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
               <input type="hidden" name="form-name" value="contact" />
               <p style="display: none;">
                 <label>Don't fill this out: <input name="bot-field" /></label>
               </p>
               
-              <!-- İsim -->
-              <div>
-                <label for="name" style="display: block; font-size: 14px; color: #D3DAD9; margin-bottom: 8px;">İsim</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  required
-                  style="width: 100%; padding: 14px 16px; background: #37353E; border: 2px solid #57564F; border-radius: 8px; color: #D3DAD9; font-size: 16px; outline: none; transition: border-color 0.3s;"
-                  onfocus="this.style.borderColor='#D3DAD9'"
-                  onblur="this.style.borderColor='#57564F'"
-                />
-              </div>
+              <!-- İsim ve E-posta (Yan yana) -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">
+                    <span class="label-icon">👤</span> İsim
+                  </label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    required
+                    placeholder="Adınız Soyadınız"
+                  />
+                </div>
 
-              <!-- E-posta -->
-              <div>
-                <label for="email" style="display: block; font-size: 14px; color: #D3DAD9; margin-bottom: 8px;">E-posta</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required
-                  style="width: 100%; padding: 14px 16px; background: #37353E; border: 2px solid #57564F; border-radius: 8px; color: #D3DAD9; font-size: 16px; outline: none; transition: border-color 0.3s;"
-                  onfocus="this.style.borderColor='#D3DAD9'"
-                  onblur="this.style.borderColor='#57564F'"
-                />
+                <div class="form-group">
+                  <label for="email">
+                    <span class="label-icon">📧</span> E-posta
+                  </label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    placeholder="ornek@email.com"
+                  />
+                </div>
               </div>
 
               <!-- Konu -->
-              <div>
-                <label for="subject" style="display: block; font-size: 14px; color: #D3DAD9; margin-bottom: 8px;">Konu</label>
-                <select 
-                  id="subject" 
-                  name="subject" 
-                  required
-                  style="width: 100%; padding: 14px 16px; background: #37353E; border: 2px solid #57564F; border-radius: 8px; color: #D3DAD9; font-size: 16px; outline: none; cursor: pointer;"
-                >
-                  <option value="">Seçiniz...</option>
-                  <option value="proje">Proje Teklifi</option>
-                  <option value="is-birligi">İş Birliği</option>
-                  <option value="danismanlik">Danışmanlık</option>
-                  <option value="diger">Diğer</option>
+              <div class="form-group">
+                <label for="subject">
+                  <span class="label-icon">📋</span> Konu
+                </label>
+                <select id="subject" name="subject" required>
+                  <option value="">Bir konu seçin...</option>
+                  <option value="proje">🎯 Proje Teklifi</option>
+                  <option value="is-birligi">🤝 İş Birliği</option>
+                  <option value="danismanlik">💼 Danışmanlık</option>
+                  <option value="diger">📝 Diğer</option>
                 </select>
               </div>
 
               <!-- Mesaj -->
-              <div>
-                <label for="message" style="display: block; font-size: 14px; color: #D3DAD9; margin-bottom: 8px;">Mesaj</label>
+              <div class="form-group">
+                <label for="message">
+                  <span class="label-icon">💬</span> Mesaj
+                </label>
                 <textarea 
                   id="message" 
                   name="message" 
                   rows="5" 
                   required
-                  style="width: 100%; padding: 14px 16px; background: #37353E; border: 2px solid #57564F; border-radius: 8px; color: #D3DAD9; font-size: 16px; outline: none; resize: vertical; transition: border-color 0.3s;"
-                  onfocus="this.style.borderColor='#D3DAD9'"
-                  onblur="this.style.borderColor='#57564F'"
+                  placeholder="Projeniz hakkında detayları paylaşın..."
                 ></textarea>
               </div>
 
               <!-- Gönder Butonu -->
-              <button 
-                type="submit"
-                id="submitBtn"
-                style="width: 100%; padding: 16px; background: #57564F; color: #D3DAD9; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s, transform 0.3s;"
-              >
-                Gönder
+              <button type="submit" id="submitBtn" class="submit-btn">
+                <span class="btn-text">Mesajı Gönder</span>
+                <span class="btn-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                  </svg>
+                </span>
+                <span class="btn-loading">
+                  <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="30 70"/>
+                  </svg>
+                </span>
               </button>
             </form>
           </div>
@@ -169,7 +196,571 @@ import Navbar from '../components/Navbar.astro';
   </main>
 </Layout>
 
+<style>
+  /* Hero Section */
+  .hero-section {
+    padding: 160px 20px 80px;
+    background: linear-gradient(135deg, #37353E 0%, #1a1a1a 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-bg-effects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+  }
+
+  .hero-glow-1 {
+    width: 400px;
+    height: 400px;
+    background: #57564F;
+    top: -150px;
+    left: 20%;
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+
+  .hero-glow-2 {
+    width: 350px;
+    height: 350px;
+    background: #44444E;
+    bottom: -100px;
+    right: 15%;
+    animation: pulse-glow 8s ease-in-out 4s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.25; transform: scale(1.1); }
+  }
+
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #57564F;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .particle-1 { top: 25%; left: 10%; animation: float 15s ease-in-out infinite; }
+  .particle-2 { top: 55%; right: 12%; animation: float 18s ease-in-out infinite reverse; }
+  .particle-3 { bottom: 25%; left: 35%; animation: float 12s ease-in-out infinite; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-20px) translateX(10px); }
+    50% { transform: translateY(-10px) translateX(-10px); }
+    75% { transform: translateY(-30px) translateX(5px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(87, 86, 79, 0.5);
+    color: #D3DAD9;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(211, 218, 217, 0.1);
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 16px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+    color: #D3DAD9;
+    opacity: 0.8;
+    line-height: 1.7;
+  }
+
+  /* Section Transition */
+  .section-transition-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, #37353E 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: 80px 0 100px;
+    background-color: #44444E;
+    position: relative;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* Contact Info */
+  .contact-info h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 32px;
+  }
+
+  .contact-info h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  /* Info Cards */
+  .info-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: #37353E;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .info-card:not(.static) {
+    cursor: pointer;
+  }
+
+  .info-card:not(.static):hover {
+    transform: translateX(8px);
+    border-color: #57564F;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .info-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #57564F 0%, #6a695f 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .info-card:not(.static):hover .info-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .info-content {
+    flex: 1;
+  }
+
+  .info-label {
+    display: block;
+    font-size: 13px;
+    color: #D3DAD9;
+    opacity: 0.6;
+    margin-bottom: 4px;
+  }
+
+  .info-value {
+    display: block;
+    font-size: 16px;
+    color: #D3DAD9;
+    font-weight: 500;
+  }
+
+  .info-arrow {
+    color: #57564F;
+    font-size: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .info-card:not(.static):hover .info-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Social Links */
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: #37353E;
+    border-radius: 12px;
+    color: #D3DAD9;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .social-link:hover {
+    background: #57564F;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  .social-link svg {
+    transition: transform 0.3s ease;
+  }
+
+  .social-link:hover svg {
+    transform: scale(1.1);
+  }
+
+  .social-link span {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Quick Note */
+  .quick-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 30px;
+    padding: 16px;
+    background: rgba(87, 86, 79, 0.3);
+    border-radius: 10px;
+    border-left: 3px solid #57564F;
+  }
+
+  .note-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .quick-note p {
+    font-size: 14px;
+    color: #D3DAD9;
+    opacity: 0.8;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Form Container */
+  .form-container {
+    background: #37353E;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+
+  .form-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #D3DAD9;
+    margin-bottom: 32px;
+  }
+
+  /* Form Styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    color: #D3DAD9;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .label-icon {
+    font-size: 16px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 16px 18px;
+    background: #44444E;
+    border: 2px solid #57564F;
+    border-radius: 10px;
+    color: #D3DAD9;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #D3DAD9;
+    opacity: 0.4;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #D3DAD9;
+    box-shadow: 0 0 0 4px rgba(211, 218, 217, 0.1);
+  }
+
+  .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D3DAD9' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    padding-right: 50px;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  /* Submit Button */
+  .submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #57564F 0%, #6a695f 100%);
+    color: #D3DAD9;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(87, 86, 79, 0.4);
+  }
+
+  .submit-btn:hover .btn-icon svg {
+    transform: translateX(3px) translateY(-3px);
+  }
+
+  .submit-btn .btn-icon svg {
+    transition: transform 0.3s ease;
+  }
+
+  .submit-btn .btn-loading {
+    display: none;
+  }
+
+  .submit-btn.loading .btn-text,
+  .submit-btn.loading .btn-icon {
+    display: none;
+  }
+
+  .submit-btn.loading .btn-loading {
+    display: block;
+  }
+
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Success Message */
+  .success-message {
+    display: none;
+    background: linear-gradient(135deg, #4a7c59 0%, #3d6b4a 100%);
+    color: #D3DAD9;
+    padding: 50px 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: successPop 0.5s ease-out;
+  }
+
+  @keyframes successPop {
+    from { 
+      opacity: 0; 
+      transform: scale(0.9) translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1) translateY(0); 
+    }
+  }
+
+  .success-message.show {
+    display: block;
+  }
+
+  .success-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .success-message h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  .success-message p {
+    opacity: 0.9;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .send-another-btn {
+    background: rgba(255,255,255,0.2);
+    color: #D3DAD9;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .send-another-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll Animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero-content h1 {
+      font-size: 36px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .form-container {
+      padding: 30px 24px;
+    }
+
+    .social-links {
+      flex-direction: column;
+    }
+
+    .social-link {
+      justify-content: center;
+    }
+  }
+</style>
+
 <script>
+  // Scroll Animation with Intersection Observer
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    animatedElements.forEach(el => observer.observe(el));
+  });
+
+  // Form Submission
   const form = document.getElementById('contactForm');
   const successMessage = document.getElementById('successMessage');
   const formContainer = document.getElementById('formContainer');
@@ -178,7 +769,7 @@ import Navbar from '../components/Navbar.astro';
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    submitBtn.textContent = 'Gönderiliyor...';
+    submitBtn.classList.add('loading');
     submitBtn.disabled = true;
 
     const formData = new FormData(form);
@@ -192,26 +783,25 @@ import Navbar from '../components/Navbar.astro';
 
       if (response.ok) {
         formContainer.style.display = 'none';
-        successMessage.style.display = 'block';
-        successMessage.scrollIntoView({ behavior: 'smooth' });
+        successMessage.classList.add('show');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         throw new Error('Form gönderilemedi');
       }
     } catch (error) {
       alert('Bir hata oluştu. Lütfen tekrar deneyin.');
-      submitBtn.textContent = 'Gönder';
+      submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
     }
   });
-</script>
 
-<style>
-  a:hover {
-    background: #57564F !important;
-  }
-  
-  #submitBtn:hover {
-    background: #D3DAD9 !important;
-    color: #37353E !important;
-  }
-</style>
+  // Input animations
+  document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+    input.addEventListener('focus', () => {
+      input.parentElement.classList.add('focused');
+    });
+    input.addEventListener('blur', () => {
+      input.parentElement.classList.remove('focused');
+    });
+  });
+</script>
